@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 글로벌 항공유 위기 현황 | Apr 10</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
+
+#header{background:#1e293b;border-bottom:1px solid #334155;padding:12px 18px 10px}
+#header h1{font-size:16px;font-weight:700;color:#f1f5f9}
+#header .sub{font-size:11px;color:#94a3b8;margin-top:3px}
+#header .ceasefire{background:#14532d;border:1px solid #16a34a;border-radius:5px;
+  padding:5px 11px;font-size:11px;color:#bbf7d0;margin-top:7px;line-height:1.55}
+
+#map-container{position:relative;width:100%;background:#0c1829}
+#map-container svg{display:block;width:100%;height:auto}
+
+#tooltip{display:none;position:fixed;background:#1e293b;border:1px solid #475569;
+  border-radius:8px;padding:9px 13px;font-size:12px;pointer-events:none;
+  max-width:260px;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.7);line-height:1.6}
+#tooltip .tn{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:3px}
+#tooltip .ts{font-size:12px;font-weight:600;margin-bottom:2px}
+#tooltip .td{font-size:11px;color:#94a3b8;margin-bottom:4px}
+#tooltip .tt{font-size:11px;color:#cbd5e1;white-space:pre-line;
+  border-top:1px solid #334155;padding-top:4px}
+
+#legend{background:#1e293b;border-top:1px solid #334155;
+  padding:9px 16px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:#cbd5e1}
+.lb{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+#reclassify{background:#1c1408;border-top:1px solid #78350f;
+  padding:6px 16px;font-size:11px;color:#fde68a;line-height:1.55}
+
+#stats{background:#1e293b;border-top:1px solid #334155;
+  padding:7px 16px;display:flex;flex-wrap:wrap;gap:5px 18px}
+.si{font-size:11px;color:#94a3b8}.si span{color:#f1f5f9;font-weight:600}
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>🌐 2026 글로벌 항공유(Jet Fuel) 위기 현황 세계지도</h1>
+  <div class="sub">기준일: 2026년 4월 10일 (D+41) &nbsp;|&nbsp; 항공유(Jet A-1) 실물 기준 분류</div>
+  <div class="ceasefire">
+    🕊 <strong>[4/8]</strong> 미-이란 2주 휴전 — 호르무즈 조건부 재개방 &nbsp;|&nbsp;
+    Brent -13%→$96 · WTI -16%→$98 &nbsp;|&nbsp;
+    <strong>BUT:</strong> IATA — "항공유 공급 정상화 수개월 소요" &nbsp;|&nbsp;
+    탱커 통항 일 10~15척 (전쟁前 120~150척)
+  </div>
+</div>
+
+<div id="map-container">
+  <svg id="worldmap" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div id="legend">
+  <div class="li"><div class="lb" style="background:#991b1b"></div>위기 CRITICAL ≤28일 / 공급 붕괴</div>
+  <div class="li"><div class="lb" style="background:#c2410c"></div>높음 HIGH 30~50일 / 실물 부족</div>
+  <div class="li"><div class="lb" style="background:#b45309"></div>보통 MODERATE 부족·가격 급등</div>
+  <div class="li"><div class="lb" style="background:#1d4ed8"></div>상대적 안정</div>
+  <div class="li"><div class="lb" style="background:#1e3a5f;border:1px solid #475569"></div>데이터 없음</div>
+</div>
+
+<div id="reclassify">
+  ★ <strong>재분류:</strong>
+  <span style="color:#f87171">ANC STABLE→HIGH</span> (한국산 탱커 수입 의존·부족 사례 보고) &nbsp;|&nbsp;
+  <span style="color:#f87171">일본 STABLE→HIGH</span> (정유소 59%↓·ANA·JAL 할증 2배) &nbsp;|&nbsp;
+  <span style="color:#fde68a">중국 STABLE→MODERATE</span> &nbsp;|&nbsp;
+  덴마크·포르투갈 <span style="color:#f97316">→HIGH</span>
+</div>
+
+<div id="stats">
+  <div class="si">CRITICAL: <span>13개</span></div>
+  <div class="si">HIGH: <span>11개</span></div>
+  <div class="si">MODERATE: <span>5개</span></div>
+  <div class="si">항공유(IATA 4/3): <span>$209/bbl (+132% YoY)</span></div>
+  <div class="si">편취소 최악일: <span>7,049편(7%)</span></div>
+  <div class="si">출처: IEA · Argus · IATA · Bloomberg · Vortexa · Al Jazeera</div>
+</div>
+
+<div id="tooltip">
+  <div class="tn" id="tt-n"></div>
+  <div class="ts" id="tt-s"></div>
+  <div class="td" id="tt-d"></div>
+  <div class="tt" id="tt-t"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const DATA = {
+  "050":{ n:"방글라데시",  d:"~7일",        s:"CRITICAL", note:"원유 95% 수입, 즉각 위기\n주유소 약탈·폭행 일상화, 6PM 마감\n항공편 붕괴 위기" },
+  "104":{ n:"미얀마",      d:"~10일",       s:"CRITICAL", note:"자체 정유 없음\n격일 운행 의무화\n국내 항공편 다수 중단" },
+  "608":{ n:"필리핀",      d:"~12일",       s:"CRITICAL", note:"국가 에너지 비상사태 선포\n원유 98% 수입, 4일 근무제" },
+  "704":{ n:"베트남",      d:"~13일",       s:"CRITICAL", note:"Skypec 4월 이후 공급 불보장\n중국·태국 수출 중단 70% 소멸\nVietJet -18%, Bamboo -50%" },
+  "586":{ n:"파키스탄",    d:"~14일",       s:"CRITICAL", note:"Jet A-1 공급망 NOTAM(4/1~)\n외국 항공사 최대 연료 탑재 권고" },
+  "116":{ n:"캄보디아",    d:"~10일",       s:"CRITICAL", note:"자체 정유 없음\n태국·베트남 수출 중단 직격" },
+  "418":{ n:"라오스",      d:"~12일",       s:"CRITICAL", note:"정유 없음, 공급망 붕괴\n경제 타격 극심" },
+  "826":{ n:"영국",        d:"~28일",       s:"CRITICAL", note:"유럽 내 항공유 최고 위험국\n쿠웨이트산 의존\n마지막 호르무즈 화물 4/10 도착" },
+  "380":{ n:"이탈리아",    d:"~28일",       s:"CRITICAL", note:"7개 공항 Air BP NOTAM\n2,000L/기 상한 — 단거리 직격" },
+  "036":{ n:"호주",        d:"28일",        s:"CRITICAL", note:"국가 연료 비상 선언\nSydney '공급 보장 불가'\n중국 수출 금지 30% 소멸" },
+  "458":{ n:"말레이시아",  d:"~20일",       s:"HIGH",     note:"AirAsia X 요금 40%↑, 할증 20%↑\nBatik Air 국내선 36% 감편" },
+  "764":{ n:"태국",        d:"~22일",       s:"HIGH",     note:"항공유 수출 전면 중단\n4/20부터 야간 주유 제한" },
+  "360":{ n:"인도네시아",  d:"~25일",       s:"HIGH",     note:"정유사 force majeure 선언\n재택근무 의무화" },
+  "392":{ n:"일본 ★",      d:"항공유 부족", s:"HIGH",     note:"정유소 20개(최고 49개→59%↓)\nANA·JAL 6월 할증 2배\n외국적 급유 제한(히로시마·나리타)\n중국 수출 금지 직격" },
+  "356":{ n:"인도",        d:"~43일",       s:"HIGH",     note:"ATF 25% 인상 정부 상한\nIndiGo·Air India 할증 급등" },
+  "554":{ n:"뉴질랜드",    d:"48일",        s:"HIGH",     note:"Air NZ 1,100편 감축\n항공유 50일(4/1, 선박 포함)" },
+  "208":{ n:"덴마크",      d:"~30일",       s:"HIGH",     note:"유럽 高취약국(Argus)\n호르무즈 노출 42% ★ 상향" },
+  "620":{ n:"포르투갈",    d:"~28일",       s:"HIGH",     note:"유럽 高취약국(Argus)\n마지막 호르무즈 화물 4/10 ★ 상향" },
+  "410":{ n:"한국",        d:"항공유 부족", s:"MODERATE", note:"Korean Air 비상경영\nLCC 동남아 대거 캔슬\n대체 원유 17개국 1.1억배럴 확보" },
+  "702":{ n:"싱가포르",    d:"비공개",      s:"MODERATE", note:"자국 우선 공급 전환\n가솔린 공급 -30%(Goldman)" },
+  "156":{ n:"중국 ★",      d:"항공유 부족", s:"MODERATE", note:"항공유 수출 금지\n국내 항공유도 타이트\n★ STABLE→MODERATE 하향" },
+  "840":{ n:"미국",        d:"~60일(본토)", s:"MODERATE", note:"본토 자급 능력 있으나\nWest Coast 정유 부족\n$4.88/갤런(+95%)" },
+  "276":{ n:"독일",        d:"~88일(EU평균)",s:"MODERATE", note:"Lufthansa 20~40기 지상 계류 준비\nIEA 방출로 단기 버퍼 존재" },
+  "752":{ n:"스웨덴(SAS)", d:"~80일",       s:"MODERATE", note:"SAS 1,000편 취소 완료" },
+};
+
+/* 프랑스 — 본토만 처리, 해외영토(남미 등) 제외 */
+const FRANCE_ID = "250";
+
+const SC = {CRITICAL:"#991b1b",HIGH:"#c2410c",MODERATE:"#b45309",STABLE:"#1d4ed8"};
+const SL = {CRITICAL:"위기 CRITICAL",HIGH:"높음 HIGH",MODERATE:"보통 MODERATE",STABLE:"안정 STABLE"};
+const SE = {CRITICAL:"#fca5a5",HIGH:"#fdba74",MODERATE:"#fde68a",STABLE:"#93c5fd"};
+
+const W=960, H=500;
+const svg = d3.select("#worldmap");
+const proj = d3.geoNaturalEarth1().scale(153).translate([W/2,H/2+25]);
+const geoPath = d3.geoPath(proj);
+
+const tt=document.getElementById("tooltip");
+function show(e,n,s,d,note){
+  document.getElementById("tt-n").textContent=n;
+  const sel=document.getElementById("tt-s");
+  sel.textContent=SL[s]||s; sel.style.color=SE[s]||"#fff";
+  document.getElementById("tt-d").textContent="항공유 가용: "+d;
+  document.getElementById("tt-t").textContent=note;
+  tt.style.display="block"; move(e);
+}
+function move(e){
+  let x=e.clientX+14,y=e.clientY+14;
+  if(x+270>window.innerWidth)x=e.clientX-275;
+  if(y+195>window.innerHeight)y=e.clientY-200;
+  tt.style.left=x+"px";tt.style.top=y+"px";
+}
+function hide(){tt.style.display="none";}
+document.addEventListener("mousemove",e=>{if(tt.style.display!=="none")move(e);});
+
+/* 프랑스 본토 판별: centroid 역투영으로 유럽 범위 확인 */
+function isFranceMainland(feature){
+  const c = geoPath.centroid(feature);
+  if(!c||isNaN(c[0])) return false;
+  const inv = proj.invert(c);
+  if(!inv) return false;
+  const [lon,lat]=inv;
+  return lon>-6 && lon<10 && lat>42 && lat<52;
+}
+
+function getInfo(feature){
+  const id=String(feature.id).padStart(3,"0");
+  const info=DATA[id];
+  if(!info) return null;
+  if(id===FRANCE_ID && !isFranceMainland(feature)) return null;
+  return info;
+}
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world=>{
+  const features=topojson.feature(world,world.objects.countries).features;
+
+  // 격자선
+  svg.append("path").datum(d3.geoGraticule()())
+    .attr("fill","none").attr("stroke","rgba(255,255,255,0.05)")
+    .attr("stroke-width",0.5).attr("d",geoPath);
+
+  // 국가
+  svg.selectAll("path.c").data(features).join("path").attr("class","c")
+    .attr("d",geoPath)
+    .attr("fill",d=>{
+      const info=getInfo(d);
+      return info ? SC[info.s] : "#1e3a5f";
+    })
+    .attr("stroke","rgba(255,255,255,0.11)").attr("stroke-width",0.4)
+    .attr("opacity",d=>getInfo(d)?0.88:0.5)
+    .style("cursor",d=>getInfo(d)?"pointer":"default")
+    .on("mousemove",function(e,d){
+      const info=getInfo(d);
+      if(info) show(e,info.n,info.s,info.d,info.note);
+    })
+    .on("mouseleave",hide);
+
+  // ── 유가·항공유 표 (우상단) ──────────────────────────────────
+  const tx=W-218, ty=8, tw=210, th=90;
+  const tg=svg.append("g");
+
+  tg.append("rect").attr("x",tx).attr("y",ty)
+    .attr("width",tw).attr("height",th)
+    .attr("fill","rgba(8,14,28,0.90)")
+    .attr("rx",6).attr("stroke","rgba(71,85,105,.85)").attr("stroke-width",0.8);
+
+  // 헤더 행
+  const cols=["일자","Dubai","Brent","WTI"];
+  const cw=[82,40,42,40];
+  let cx=tx+6;
+  cols.forEach((c,i)=>{
+    tg.append("text").attr("x",cx).attr("y",ty+18)
+      .attr("font-size","9px").attr("font-weight","700")
+      .attr("fill","#94a3b8").text(c);
+    cx+=cw[i];
+  });
+
+  // 구분선
+  tg.append("line").attr("x1",tx+4).attr("x2",tx+tw-4)
+    .attr("y1",ty+22).attr("y2",ty+22)
+    .attr("stroke","rgba(71,85,105,.7)").attr("stroke-width",0.6);
+
+  // 데이터 행
+  const rows=[
+    ["04월 09일","102","95.92","97.87"],
+  ];
+  const rowColors=["#7dd3fc","#6ee7b7","#6ee7b7","#7dd3fc"];
+  rows.forEach((row,ri)=>{
+    let cx2=tx+6;
+    row.forEach((val,ci)=>{
+      tg.append("text").attr("x",cx2).attr("y",ty+38+ri*17)
+        .attr("font-size","10px")
+        .attr("font-weight",ci===0?"400":"600")
+        .attr("fill",ci===0?"#cbd5e1":rowColors[ci])
+        .text(val);
+      cx2+=cw[ci];
+    });
+  });
+
+  // 구분선2
+  tg.append("line").attr("x1",tx+4).attr("x2",tx+tw-4)
+    .attr("y1",ty+46).attr("y2",ty+46)
+    .attr("stroke","rgba(71,85,105,.5)").attr("stroke-width",0.5);
+
+  // 항공유 행
+  tg.append("text").attr("x",tx+6).attr("y",ty+60)
+    .attr("font-size","9px").attr("fill","#94a3b8").text("항공유(IATA 4/3)");
+  tg.append("text").attr("x",tx+6).attr("y",ty+76)
+    .attr("font-size","13px").attr("font-weight","700")
+    .attr("fill","#f87171").text("$209 /bbl");
+  tg.append("text").attr("x",tx+90).attr("y",ty+76)
+    .attr("font-size","9.5px").attr("fill","#64748b").text("(+132% YoY)");
+
+  // 단위 표시
+  tg.append("text").attr("x",tx+6).attr("y",ty+th-5)
+    .attr("font-size","8px").attr("fill","rgba(100,116,139,.7)").text("단위: USD/배럴");
+
+
+
+  // D+41 배너
+  svg.append("rect").attr("x",8).attr("y",H-28)
+    .attr("width",320).attr("height",20)
+    .attr("fill","rgba(8,14,28,.82)").attr("rx",4)
+    .attr("stroke","rgba(71,85,105,.5)").attr("stroke-width",0.5);
+  svg.append("text").attr("x",14).attr("y",H-13)
+    .attr("font-size","8.5px").attr("fill","#94a3b8")
+    .text("D+41 | ★ANC: STABLE→HIGH (한국산 탱커 의존 + 부족 보고)");
+
+}).catch(()=>{
+  svg.append("text").attr("x",W/2).attr("y",H/2)
+    .attr("text-anchor","middle").attr("fill","#94a3b8")
+    .attr("font-size","14px").text("지도 로딩 실패");
+});
+</script>
+</body>
+</html>
