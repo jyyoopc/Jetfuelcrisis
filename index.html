@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 글로벌 항공유 위기 현황 | Apr 10</title>
+<title>2026 글로벌 항공유 위기 현황 | Apr 14</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
@@ -43,12 +43,13 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
 
 <div id="header">
   <h1>🌐 2026 글로벌 항공유(Jet Fuel) 위기 현황 세계지도</h1>
-  <div class="sub">기준일: 2026년 4월 10일 (D+41) &nbsp;|&nbsp; 항공유(Jet A-1) 실물 기준 분류</div>
-  <div class="ceasefire">
-    🕊 <strong>[4/8]</strong> 미-이란 2주 휴전 — 호르무즈 조건부 재개방 &nbsp;|&nbsp;
-    Brent -13%→$96 · WTI -16%→$98 &nbsp;|&nbsp;
-    <strong>BUT:</strong> IATA — "항공유 공급 정상화 수개월 소요" &nbsp;|&nbsp;
-    탱커 통항 일 10~15척 (전쟁前 120~150척)
+  <div class="sub">기준일: 2026년 4월 14일 (D+45) &nbsp;|&nbsp; 항공유(Jet A-1) 실물 기준 분류 &nbsp;|&nbsp; ★ 미 해군봉쇄 4/14 오전10시 ET 발효</div>
+  <div class="ceasefire" style="background:#3b0f1a;border-color:#f43f5e;color:#fecdd3;">
+    🚢 <strong>[4/14 해군봉쇄 발효]</strong> CENTCOM: 이란 항구 출입 모든 선박 차단 &nbsp;|&nbsp;
+    Dubai $106.5 · Brent $99.36(+4.4%) · WTI $99.08(+2.6%) &nbsp;|&nbsp;
+    NW유럽 항공유 <strong>$1,573/톤</strong> (전쟁 전 $750 대비 <strong>2.1배</strong>) &nbsp;|&nbsp;
+    ACI Europe: 유럽 100개 공항 비축 8~10일 &nbsp;|&nbsp;
+    4/12 Vance 결렬 → 4/14 봉쇄 발효 · 정상화 7월 이전 불가(CNN)
   </div>
 </div>
 
@@ -65,20 +66,20 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
 </div>
 
 <div id="reclassify">
-  ★ <strong>재분류:</strong>
-  <span style="color:#f87171">ANC STABLE→HIGH</span> (한국산 탱커 수입 의존·부족 사례 보고) &nbsp;|&nbsp;
-  <span style="color:#f87171">일본 STABLE→HIGH</span> (정유소 59%↓·ANA·JAL 할증 2배) &nbsp;|&nbsp;
-  <span style="color:#fde68a">중국 STABLE→MODERATE</span> &nbsp;|&nbsp;
-  덴마크·포르투갈 <span style="color:#f97316">→HIGH</span>
+  🚢 <strong>[4/14 해군봉쇄]</strong> IEA SPR 한계 접근 — 갭 4.5→11Mbpd 확대 위험 &nbsp;|&nbsp;
+  <span style="color:#f87171">★ 신규 CRITICAL: 아일랜드(주유소 600곳 고갈) · 슬로베니아(EU 최초 50L/일 배급)</span> &nbsp;|&nbsp;
+  <span style="color:#f87171">영국·이탈리아·LAX HIGH→CRITICAL</span> &nbsp;|&nbsp;
+  <span style="color:#f97316">ANC·일본 STABLE→HIGH</span> &nbsp;|&nbsp;
+  <span style="color:#fde68a">중국 STABLE→MODERATE</span>
 </div>
 
 <div id="stats">
-  <div class="si">CRITICAL: <span>13개</span></div>
+  <div class="si">CRITICAL: <span>15개</span></div>
   <div class="si">HIGH: <span>11개</span></div>
   <div class="si">MODERATE: <span>5개</span></div>
-  <div class="si">항공유(IATA 4/3): <span>$209/bbl (+132% YoY)</span></div>
-  <div class="si">편취소 최악일: <span>7,049편(7%)</span></div>
-  <div class="si">출처: IEA · Argus · IATA · Bloomberg · Vortexa · Al Jazeera</div>
+  <div class="si">NW유럽 항공유: <span>$1,573/톤 (×2.1)</span></div>
+  <div class="si">Brent: <span>$99.36 | WTI: $99.08 | Dubai: $106.5</span></div>
+  <div class="si">출처: ACI Europe · GEF(4/12) · CNN · CNBC · Wikipedia · Argus</div>
 </div>
 
 <div id="tooltip">
@@ -92,30 +93,36 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
 const DATA = {
-  "050":{ n:"방글라데시",  d:"~7일",        s:"CRITICAL", note:"원유 95% 수입, 즉각 위기\n주유소 약탈·폭행 일상화, 6PM 마감\n항공편 붕괴 위기" },
-  "104":{ n:"미얀마",      d:"~10일",       s:"CRITICAL", note:"자체 정유 없음\n격일 운행 의무화\n국내 항공편 다수 중단" },
-  "608":{ n:"필리핀",      d:"~12일",       s:"CRITICAL", note:"국가 에너지 비상사태 선포\n원유 98% 수입, 4일 근무제" },
-  "704":{ n:"베트남",      d:"~13일",       s:"CRITICAL", note:"Skypec 4월 이후 공급 불보장\n중국·태국 수출 중단 70% 소멸\nVietJet -18%, Bamboo -50%" },
-  "586":{ n:"파키스탄",    d:"~14일",       s:"CRITICAL", note:"Jet A-1 공급망 NOTAM(4/1~)\n외국 항공사 최대 연료 탑재 권고" },
-  "116":{ n:"캄보디아",    d:"~10일",       s:"CRITICAL", note:"자체 정유 없음\n태국·베트남 수출 중단 직격" },
-  "418":{ n:"라오스",      d:"~12일",       s:"CRITICAL", note:"정유 없음, 공급망 붕괴\n경제 타격 극심" },
-  "826":{ n:"영국",        d:"~28일",       s:"CRITICAL", note:"유럽 내 항공유 최고 위험국\n쿠웨이트산 의존\n마지막 호르무즈 화물 4/10 도착" },
-  "380":{ n:"이탈리아",    d:"~28일",       s:"CRITICAL", note:"7개 공항 Air BP NOTAM\n2,000L/기 상한 — 단거리 직격" },
-  "036":{ n:"호주",        d:"28일",        s:"CRITICAL", note:"국가 연료 비상 선언\nSydney '공급 보장 불가'\n중국 수출 금지 30% 소멸" },
-  "458":{ n:"말레이시아",  d:"~20일",       s:"HIGH",     note:"AirAsia X 요금 40%↑, 할증 20%↑\nBatik Air 국내선 36% 감편" },
-  "764":{ n:"태국",        d:"~22일",       s:"HIGH",     note:"항공유 수출 전면 중단\n4/20부터 야간 주유 제한" },
-  "360":{ n:"인도네시아",  d:"~25일",       s:"HIGH",     note:"정유사 force majeure 선언\n재택근무 의무화" },
-  "392":{ n:"일본 ★",      d:"항공유 부족", s:"HIGH",     note:"정유소 20개(최고 49개→59%↓)\nANA·JAL 6월 할증 2배\n외국적 급유 제한(히로시마·나리타)\n중국 수출 금지 직격" },
-  "356":{ n:"인도",        d:"~43일",       s:"HIGH",     note:"ATF 25% 인상 정부 상한\nIndiGo·Air India 할증 급등" },
-  "554":{ n:"뉴질랜드",    d:"48일",        s:"HIGH",     note:"Air NZ 1,100편 감축\n항공유 50일(4/1, 선박 포함)" },
-  "208":{ n:"덴마크",      d:"~30일",       s:"HIGH",     note:"유럽 高취약국(Argus)\n호르무즈 노출 42% ★ 상향" },
-  "620":{ n:"포르투갈",    d:"~28일",       s:"HIGH",     note:"유럽 高취약국(Argus)\n마지막 호르무즈 화물 4/10 ★ 상향" },
-  "410":{ n:"한국",        d:"항공유 부족", s:"MODERATE", note:"Korean Air 비상경영\nLCC 동남아 대거 캔슬\n대체 원유 17개국 1.1억배럴 확보" },
-  "702":{ n:"싱가포르",    d:"비공개",      s:"MODERATE", note:"자국 우선 공급 전환\n가솔린 공급 -30%(Goldman)" },
-  "156":{ n:"중국 ★",      d:"항공유 부족", s:"MODERATE", note:"항공유 수출 금지\n국내 항공유도 타이트\n★ STABLE→MODERATE 하향" },
-  "840":{ n:"미국",        d:"~60일(본토)", s:"MODERATE", note:"본토 자급 능력 있으나\nWest Coast 정유 부족\n$4.88/갤런(+95%)" },
-  "276":{ n:"독일",        d:"~88일(EU평균)",s:"MODERATE", note:"Lufthansa 20~40기 지상 계류 준비\nIEA 방출로 단기 버퍼 존재" },
-  "752":{ n:"스웨덴(SAS)", d:"~80일",       s:"MODERATE", note:"SAS 1,000편 취소 완료" },
+  // ── CRITICAL ────────────────────────────────────────────────
+  "050":{ n:"방글라데시",  d:"~3일",        s:"CRITICAL", note:"QR코드 배급제 시행\n원유 95% 수입, 즉각 위기\n주유소 약탈·관리자 폭행·사망 발생\n항공편 붕괴 위기" },
+  "104":{ n:"미얀마",      d:"~7일",        s:"CRITICAL", note:"국내 항공사 전편 운항 중단\n격일 운행 의무화\n자체 정유 없음" },
+  "608":{ n:"필리핀",      d:"~10일",       s:"CRITICAL", note:"국가 에너지 비상사태(1년)\n대통령: '항공기 지상 대기 가능성'\n왕복 연료 탑재 의무화" },
+  "704":{ n:"베트남",      d:"~10일",       s:"CRITICAL", note:"Skypec 공급 불보장\n국내 23편/주 감편\nVietJet -18%, Bamboo -50%" },
+  "586":{ n:"파키스탄",    d:"~12일",       s:"CRITICAL", note:"Jet A-1 NOTAM(4/1~)\n조종사 출발지 최대 연료 탑재 의무" },
+  "116":{ n:"캄보디아",    d:"~6일",        s:"CRITICAL", note:"주유소 40%+ 폐쇄\n자체 정유 없음\n태국·베트남 수출 중단 직격" },
+  "418":{ n:"라오스",      d:"~6일",        s:"CRITICAL", note:"정유 없음, 공급망 붕괴\n경제 타격 극심" },
+  "372":{ n:"아일랜드 ★",  d:"~12일",       s:"CRITICAL", note:"★ 4/13 신규 CRITICAL\n주유소 600곳 이상 고갈\nWhitegate 정유소 봉쇄\n7/4 연료 시위 지속" },
+  "705":{ n:"슬로베니아 ★",d:"~12일",       s:"CRITICAL", note:"★ EU 최초 공식 배급제 시행\n50L/일(개인) / 200L(비즈니스·농업)\n항공유 별도 위기" },
+  "826":{ n:"영국",        d:"~18일",       s:"CRITICAL", note:"영국 향 탱커 수면 위 전무(FT)\n쿠웨이트산 의존 — 유럽 최고 위험\nACI: 비축 8~10일 수준\nRyanair 5~10% 여름 감편 경고" },
+  "380":{ n:"이탈리아",    d:"~18일",       s:"CRITICAL", note:"7개 공항 Air BP NOTAM 지속\n2,000L/기 상한 — 단거리 직격\n4/10 후 신규 입고 없음" },
+  "036":{ n:"호주",        d:"~22일",       s:"CRITICAL", note:"국가 연료 비상 선언\nSydney '공급 보장 불가'\n중국 수출 금지 30% 소멸" },
+  // ── HIGH ───────────────────────────────────────────────────
+  "458":{ n:"말레이시아",  d:"~18일",       s:"HIGH",     note:"AirAsia X 요금 40%↑, 할증 20%↑\nBatik Air 국내선 36% 감편\n6월 위기 가능성(Kumparan)" },
+  "764":{ n:"태국",        d:"~18일",       s:"HIGH",     note:"항공유 수출 전면 중단\n4/20부터 야간 주유 제한\n디젤 가격 상한제 시행" },
+  "360":{ n:"인도네시아",  d:"~22일",       s:"HIGH",     note:"정유사 force majeure 선언\n재택근무 의무화\n연료 20~23일" },
+  "392":{ n:"일본 ★",      d:"항공유 부족", s:"HIGH",     note:"★ STABLE→HIGH 재분류\n정유소 20개(최고 49개→59%↓)\nANA·JAL 6월 할증 2배\n역대 최대 SPR 방출(8,000만배럴)\n외국적 급유 제한(히로시마·나리타)" },
+  "356":{ n:"인도",        d:"~38일",       s:"HIGH",     note:"ATF 25% 인상 정부 상한\nIndiGo·Air India 할증 급등\n우회 비행 연료 소모 증가" },
+  "554":{ n:"뉴질랜드",    d:"~43일",       s:"HIGH",     note:"Air NZ 1,100편 감축\nJ/F 4단계 경보 시스템 운영\n3/12 6일치 SPR 방출" },
+  "208":{ n:"덴마크",      d:"~25일",       s:"HIGH",     note:"유럽 高취약국(Argus)\n호르무즈 노출 42%\n★ MODERATE→HIGH 상향" },
+  "620":{ n:"포르투갈",    d:"~21일",       s:"HIGH",     note:"유럽 高취약국(Argus)\n4/10 이후 신규 입고 없음\n★ MODERATE→HIGH 상향" },
+  // ── MODERATE ──────────────────────────────────────────────
+  "410":{ n:"한국",        d:"항공유 부족", s:"MODERATE", note:"Korean Air 비상경영\nLCC 동남아 대거 캔슬\n대체 원유 17개국 1.1억배럴 확보\n수출 항공유 내수 전환 검토" },
+  "702":{ n:"싱가포르",    d:"비공개",      s:"MODERATE", note:"자국 우선 공급 전환\n지역 허브 기능 유지\nSAF 부과금 10월로 연기" },
+  "156":{ n:"중국 ★",      d:"항공유 부족", s:"MODERATE", note:"★ STABLE→MODERATE 하향\n항공유 수출 금지\n동남아 소량 수출 재개 타진\n美 LNG·원유 수입 재개 협상 중" },
+  "840":{ n:"미국",        d:"~55일(본토)", s:"MODERATE", note:"본토 자급 능력 있으나\nWest Coast 정유 부족\n해군봉쇄로 재급등\n$4.88/갤런(+95%)" },
+  "250":{ n:"프랑스",      d:"~60일",       s:"MODERATE", note:"주유소 18% 바닥(주의 수준)\n자체 정제 능력으로 완충\n항공유 상대적 안정" },
+  "276":{ n:"독일",        d:"~75일(EU평균)",s:"MODERATE", note:"Lufthansa 20~40기 지상 계류 준비\nACI 3주 경고 공동 서명\nIEA 방출로 단기 버퍼" },
+  "752":{ n:"스웨덴(SAS)", d:"~75일",       s:"MODERATE", note:"SAS 1,000편 취소 완료\nACI 3주 경고 공동 서명" },
 };
 
 /* 프랑스 — 본토만 처리, 해외영토(남미 등) 제외 */
@@ -191,75 +198,81 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(w
     .on("mouseleave",hide);
 
   // ── 유가·항공유 표 (우상단) ──────────────────────────────────
-  const tx=W-218, ty=8, tw=210, th=90;
+  const tx=W-230, ty=8, tw=222, th=108;
   const tg=svg.append("g");
 
   tg.append("rect").attr("x",tx).attr("y",ty)
     .attr("width",tw).attr("height",th)
-    .attr("fill","rgba(8,14,28,0.90)")
+    .attr("fill","rgba(8,14,28,0.92)")
     .attr("rx",6).attr("stroke","rgba(71,85,105,.85)").attr("stroke-width",0.8);
 
   // 헤더 행
   const cols=["일자","Dubai","Brent","WTI"];
-  const cw=[82,40,42,40];
+  const cw=[80,38,42,38];
   let cx=tx+6;
   cols.forEach((c,i)=>{
-    tg.append("text").attr("x",cx).attr("y",ty+18)
-      .attr("font-size","9px").attr("font-weight","700")
+    tg.append("text").attr("x",cx).attr("y",ty+16)
+      .attr("font-size","8.5px").attr("font-weight","700")
       .attr("fill","#94a3b8").text(c);
     cx+=cw[i];
   });
 
   // 구분선
   tg.append("line").attr("x1",tx+4).attr("x2",tx+tw-4)
-    .attr("y1",ty+22).attr("y2",ty+22)
+    .attr("y1",ty+20).attr("y2",ty+20)
     .attr("stroke","rgba(71,85,105,.7)").attr("stroke-width",0.6);
 
-  // 데이터 행
+  // 데이터 행 3개
   const rows=[
-    ["04월 09일","102","95.92","97.87"],
+    ["04/09","102","95.92","97.87"],
+    ["04/10","100.87","95.20","96.57"],
+    ["04/13","106.5","99.36","99.08"],
   ];
-  const rowColors=["#7dd3fc","#6ee7b7","#6ee7b7","#7dd3fc"];
+  const rowColorsNormal=["#7dd3fc","#6ee7b7","#6ee7b7","#7dd3fc"];
+  const rowColorsAlert= ["#7dd3fc","#f87171","#f87171","#f87171"];
   rows.forEach((row,ri)=>{
+    const isAlert = ri === 2;
+    const rc = isAlert ? rowColorsAlert : rowColorsNormal;
     let cx2=tx+6;
     row.forEach((val,ci)=>{
-      tg.append("text").attr("x",cx2).attr("y",ty+38+ri*17)
-        .attr("font-size","10px")
+      tg.append("text").attr("x",cx2).attr("y",ty+33+ri*16)
+        .attr("font-size","9.5px")
         .attr("font-weight",ci===0?"400":"600")
-        .attr("fill",ci===0?"#cbd5e1":rowColors[ci])
+        .attr("fill",ci===0?"#cbd5e1":rc[ci])
         .text(val);
       cx2+=cw[ci];
     });
+    // 04/13 행 우측에 봉쇄 표시
+    if(isAlert){
+      tg.append("text").attr("x",tx+tw-32).attr("y",ty+33+ri*16)
+        .attr("font-size","7.5px").attr("font-weight","700")
+        .attr("fill","#f87171").text("봉쇄↑");
+    }
   });
 
   // 구분선2
   tg.append("line").attr("x1",tx+4).attr("x2",tx+tw-4)
-    .attr("y1",ty+46).attr("y2",ty+46)
+    .attr("y1",ty+83).attr("y2",ty+83)
     .attr("stroke","rgba(71,85,105,.5)").attr("stroke-width",0.5);
 
   // 항공유 행
-  tg.append("text").attr("x",tx+6).attr("y",ty+60)
-    .attr("font-size","9px").attr("fill","#94a3b8").text("항공유(IATA 4/3)");
-  tg.append("text").attr("x",tx+6).attr("y",ty+76)
-    .attr("font-size","13px").attr("font-weight","700")
-    .attr("fill","#f87171").text("$209 /bbl");
-  tg.append("text").attr("x",tx+90).attr("y",ty+76)
-    .attr("font-size","9.5px").attr("fill","#64748b").text("(+132% YoY)");
-
-  // 단위 표시
-  tg.append("text").attr("x",tx+6).attr("y",ty+th-5)
-    .attr("font-size","8px").attr("fill","rgba(100,116,139,.7)").text("단위: USD/배럴");
+  tg.append("text").attr("x",tx+6).attr("y",ty+93)
+    .attr("font-size","8.5px").attr("fill","#94a3b8").text("NW유럽 항공유(Argus 4/13)");
+  tg.append("text").attr("x",tx+6).attr("y",ty+th-4)
+    .attr("font-size","12px").attr("font-weight","700")
+    .attr("fill","#f87171").text("$1,573/톤");
+  tg.append("text").attr("x",tx+90).attr("y",ty+th-4)
+    .attr("font-size","8.5px").attr("fill","#64748b").text("(전쟁 전 $750 → ×2.1)");
 
 
 
-  // D+41 배너
   svg.append("rect").attr("x",8).attr("y",H-28)
-    .attr("width",320).attr("height",20)
-    .attr("fill","rgba(8,14,28,.82)").attr("rx",4)
-    .attr("stroke","rgba(71,85,105,.5)").attr("stroke-width",0.5);
+    .attr("width",420).attr("height",20)
+    .attr("fill","rgba(59,15,26,.85)").attr("rx",4)
+    .attr("stroke","rgba(244,63,94,.4)").attr("stroke-width",0.5);
   svg.append("text").attr("x",14).attr("y",H-13)
-    .attr("font-size","8.5px").attr("fill","#94a3b8")
-    .text("D+41 | ★ANC: STABLE→HIGH (한국산 탱커 의존 + 부족 보고)");
+    .attr("font-size","8.5px").attr("fill","#fecdd3")
+    .text("D+45 | 🚢 해군봉쇄 발효(4/14) | ★신규 CRITICAL: 아일랜드·슬로베니아 | ANC·일본 HIGH");
 
 }).catch(()=>{
   svg.append("text").attr("x",W/2).attr("y",H/2)
