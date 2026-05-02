@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 글로벌 항공유 위기 현황 | Apr 24</title>
+<title>글로벌 항공유 위기 현황 | May 1, 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
@@ -15,19 +15,22 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
   padding:5px 11px;font-size:11px;color:#fecdd3;margin-top:7px;line-height:1.6}
 
 #filter-bar{background:#1e293b;border-bottom:1px solid #334155;
-  padding:6px 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-#filter-bar span{font-size:11px;color:#64748b;margin-right:4px}
-.fb{font-size:11px;padding:3px 11px;border-radius:14px;border:none;
-  cursor:pointer;font-weight:600;transition:opacity .15s}
-.fb:hover{opacity:.8}
-.fb.active{outline:2px solid #fff;outline-offset:1px}
+  padding:7px 16px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+#filter-bar span{font-size:11px;color:#64748b;margin-right:2px}
+.fb{font-size:11px;padding:4px 13px;border-radius:14px;border:none;
+  cursor:pointer;font-weight:700;transition:all .15s;letter-spacing:.01em}
+.fb:hover{filter:brightness(1.15)}
+.fb.active{outline:2.5px solid #fff;outline-offset:2px;filter:brightness(1.1)}
+
+#filter-info{background:#0c1829;border-bottom:1px solid #1e293b;
+  padding:4px 16px;font-size:11px;color:#fde68a;min-height:22px;line-height:22px}
 
 #map-container{position:relative;width:100%;background:#0c1829}
 #map-container svg{display:block;width:100%;height:auto}
 
 #tooltip{display:none;position:fixed;background:#1e293b;border:1px solid #475569;
-  border-radius:8px;padding:9px 13px;font-size:12px;pointer-events:none;
-  max-width:270px;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.75);line-height:1.6}
+  border-radius:8px;padding:10px 14px;font-size:12px;pointer-events:none;
+  max-width:300px;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.9);line-height:1.65}
 #tooltip .tn{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:3px}
 #tooltip .ts{font-size:11px;font-weight:600;margin-bottom:2px}
 #tooltip .td{font-size:11px;color:#94a3b8;margin-bottom:4px}
@@ -35,17 +38,46 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
   border-top:1px solid #334155;padding-top:5px;margin-top:2px}
 
 #legend{background:#1e293b;border-top:1px solid #334155;
-  padding:8px 16px;display:flex;flex-wrap:wrap;gap:5px 14px;align-items:center}
+  padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
 .li{display:flex;align-items:center;gap:5px;font-size:11px;color:#cbd5e1}
 .lb{width:12px;height:12px;border-radius:3px;flex-shrink:0}
 .lc{width:10px;height:10px;border-radius:50%;flex-shrink:0;border:1.5px solid #fff}
 
 #update-bar{background:#1c1408;border-top:1px solid #78350f;
-  padding:6px 16px;font-size:11px;color:#fde68a;line-height:1.6}
+  padding:6px 16px;font-size:10.5px;color:#fde68a;line-height:1.65}
 
 #stats{background:#1e293b;border-top:1px solid #334155;
   padding:7px 16px;display:flex;flex-wrap:wrap;gap:5px 18px}
 .si{font-size:11px;color:#94a3b8}.si span{color:#f1f5f9;font-weight:600}
+
+/* 랭킹 테이블 */
+#ranktable{background:#1e293b;border-top:2px solid #991b1b;padding:14px 16px 16px}
+#rt-title{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
+#rt-sub{font-size:10px;color:#94a3b8;line-height:1.55;margin-bottom:10px;
+  background:#0f172a;padding:5px 8px;border-radius:4px;border-left:3px solid #f43f5e}
+#rt-table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
+#rt-table th{background:#0f172a;color:#94a3b8;font-weight:700;padding:6px 8px;
+  text-align:center;border-bottom:1px solid #334155;font-size:10px;white-space:nowrap}
+#rt-table th:nth-child(1){width:38px}
+#rt-table th:nth-child(2){width:22%;text-align:left}
+#rt-table th:nth-child(3){width:18%}
+#rt-table th:nth-child(4){width:24%;text-align:left}
+#rt-table th:nth-child(5){width:10%}
+#rt-table td{padding:5px 8px;border-bottom:1px solid rgba(51,65,85,.4);
+  text-align:center;vertical-align:middle}
+#rt-table td:nth-child(2){text-align:left;font-weight:600}
+#rt-table td:nth-child(4){text-align:left}
+#rt-table tr:hover td{background:rgba(255,255,255,.04)}
+.lvl5 td{background:rgba(153,27,27,.45)!important;color:#fca5a5}
+.lvl4 td{background:rgba(194,65,12,.38)!important;color:#fdba74}
+.lvl3 td{background:rgba(180,83,9,.32)!important;color:#fef08a}
+.lvl2 td{background:rgba(29,78,216,.32)!important;color:#93c5fd}
+.badge{display:inline-block;padding:1px 7px;border-radius:8px;
+  font-size:9.5px;font-weight:700;white-space:nowrap}
+.b5{background:#991b1b;color:#fca5a5}
+.b4{background:#c2410c;color:#fdba74}
+.b3{background:#b45309;color:#fef3c7}
+.b2{background:#1d4ed8;color:#bfdbfe}
 </style>
 </head>
 <body>
@@ -53,180 +85,65 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
 <div id="header">
   <h1>🌐 2026 글로벌 항공유(Jet Fuel) 위기 현황 세계지도</h1>
   <div class="sub">
-    기준일: 2026년 4월 24일 오전 (D+55) &nbsp;|&nbsp;
-    Jet A-1 실물 비축 기준 분류 &nbsp;|&nbsp;
-    Brent $105.07(Apr 23) — 전쟁 전 대비 +46% &nbsp;|&nbsp;
-    IATA: '5월 말 유럽 결항 시작 가능'
+    기준일: 2026년 5월 1일 (D+62) &nbsp;|&nbsp;
+    위험도 LEVEL 등급 기준 분류 &nbsp;|&nbsp;
+    Brent $114.01(Apr 30) — 전쟁 前 $72 대비 +58% &nbsp;|&nbsp;
+    IATA Jet Fuel Week (w/e Apr 28): $179.46/bbl (↓2.8% WoW)
   </div>
   <div class="alert">
-    🚨 <strong>[IATA 공식 경고 Apr 17]</strong>
-    Willie Walsh: <strong>"5월 말까지 유럽 항공유 부족으로 결항 시작 가능 — 아시아는 이미 진행 중"</strong> &nbsp;|&nbsp;
-    <strong>Lufthansa 그룹 2만 편 취소</strong>(~Oct) Austrian·SWISS·ITA·Brussels 포함 &nbsp;|&nbsp;
-    영국 IAG: <strong>'5~6주분 → 소진 중'</strong> · Ryanair 5~25% 차질 경고 &nbsp;|&nbsp;
-    EU 집행위 4/22 비상계획: 27개국 항공유 공유 메커니즘 &nbsp;|&nbsp;
-    Brent <strong>$105.07</strong> · WTI <strong>$95.85</strong> (Apr 23 재급등)
+    📊 <strong>[May 1 위험도 LEVEL 업데이트 D+62]</strong>
+    <strong>LEVEL 5 (배급·차단 공식 확인):</strong> 이탈리아(Air BP NOTAM) · 슬로베니아(EU최초 배급) · 아일랜드(정유소 봉쇄) · 방글라데시(QR배급) · 이집트(30%감축) · 스리랑카(15L/주 배급) &nbsp;|&nbsp;
+    <strong>LEVEL 4:</strong> 영국·독일·프랑스·호주(30일) · NZ(27일) · 필리핀(38일) · 베트남·미얀마·캄보디아·라오스 외 &nbsp;|&nbsp;
+    <strong>LEVEL 3:</strong> 태국(95일·과잉·수출재개검토) · 한국·일본(200일+·5월수출2배↑) &nbsp;|&nbsp;
+    Brent <strong>$114.01</strong> · WTI <strong>$105.07</strong>(Apr 30) | IATA Jet Fuel w/e Apr28: <strong>$179.46/bbl</strong> (↓2.8% WoW)
   </div>
 </div>
 
 <div id="filter-bar">
-  <span>필터:</span>
-  <button class="fb active" style="background:#475569;color:#f1f5f9" onclick="setFilter('ALL')">전체</button>
-  <button class="fb" style="background:#991b1b;color:#fca5a5" onclick="setFilter('CRITICAL')">위기 CRITICAL</button>
-  <button class="fb" style="background:#c2410c;color:#fdba74" onclick="setFilter('HIGH')">높음 HIGH</button>
-  <button class="fb" style="background:#b45309;color:#fde68a" onclick="setFilter('MODERATE')">보통 MODERATE</button>
-  <button class="fb" style="background:#1d4ed8;color:#93c5fd" onclick="setFilter('STABLE')">안정 STABLE</button>
-  <button class="fb" style="background:#6b21a8;color:#e9d5ff" onclick="setFilter('PADD5')">PADD5 공항</button>
+  <span>등급별 필터:</span>
+  <button class="fb active" id="btn-ALL" style="background:#475569;color:#f1f5f9" onclick="setFilter('ALL')">전체 보기</button>
+  <button class="fb" id="btn-L5" style="background:#991b1b;color:#fca5a5" onclick="setFilter('CRITICAL')">🔴 LEVEL 5 — 배급·차단</button>
+  <button class="fb" id="btn-L4" style="background:#c2410c;color:#fdba74" onclick="setFilter('HIGH')">🟠 LEVEL 4 — 비축 위기</button>
+  <button class="fb" id="btn-L3" style="background:#b45309;color:#fde68a" onclick="setFilter('MODERATE')">🟡 LEVEL 3 — 상대적 완충</button>
+  <button class="fb" id="btn-L2" style="background:#1d4ed8;color:#93c5fd" onclick="setFilter('STABLE')">🔵 LEVEL 2 — 안정</button>
+  <button class="fb" id="btn-P5" style="background:#6b21a8;color:#e9d5ff" onclick="setFilter('PADD5')">✈ PADD5 공항</button>
 </div>
 
+<div id="filter-info">전체 표시 중 — 필터 버튼으로 등급별 확인</div>
+
 <div id="map-container">
-  <svg id="worldmap" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg"></svg>
+  <svg id="worldmap" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg">
+
+  </svg>
 </div>
 
 <div id="legend">
-  <div class="li"><div class="lb" style="background:#991b1b"></div>위기 CRITICAL ≤28일 / 공급붕괴</div>
-  <div class="li"><div class="lb" style="background:#c2410c"></div>높음 HIGH 30~50일 / 실물부족</div>
-  <div class="li"><div class="lb" style="background:#b45309"></div>보통 MODERATE 부족·가격급등</div>
-  <div class="li"><div class="lb" style="background:#1d4ed8"></div>상대적 안정</div>
-  <div class="li"><div class="lb" style="background:#1e3a5f;border:1px solid #475569"></div>데이터 없음</div>
-  <div class="li"><div class="lc" style="background:#991b1b"></div>CRITICAL 공항</div>
-  <div class="li"><div class="lc" style="background:#c2410c"></div>HIGH / PADD5 공항</div>
+  <div class="li"><div class="lb" style="background:#991b1b"></div><strong style="color:#fca5a5">LEVEL 5</strong>&nbsp;배급 시행 · 공급 차단 공식 확인</div>
+  <div class="li"><div class="lb" style="background:#c2410c"></div><strong style="color:#fdba74">LEVEL 4</strong>&nbsp;비축 위기 · 대규모 감편 · 공급 압박</div>
+  <div class="li"><div class="lb" style="background:#b45309"></div><strong style="color:#fde68a">LEVEL 3</strong>&nbsp;상대적 완충 (자체정제·헤징·과잉)</div>
+  <div class="li"><div class="lb" style="background:#1d4ed8"></div><strong style="color:#93c5fd">LEVEL 2</strong>&nbsp;IEA '안정' 명시 · 자국 생산 충분</div>
+  <div class="li"><div class="lb" style="background:#1e3a5f;border:1px solid #334155"></div>데이터 없음</div>
+  <div class="li"><div class="lc" style="background:#c2410c"></div>PADD5 공항 (ANC·LAX·HNL)</div>
 </div>
 
 <div id="update-bar">
-  📌 <strong>Apr 24 오전 기준 (D+55) — IATA 공식 경고 반영:</strong>
-  <span style="color:#f87171">IATA Walsh: "5월 말 유럽 결항 가능 — 아시아 이미 진행" | IAG "5~6주분→소진중" | Ryanair 5~25% 차질</span> &nbsp;|&nbsp;
-  <span style="color:#fbbf24">Lufthansa 그룹 2만편 취소(~Oct) Austrian·SWISS·ITA·Brussels 포함 | IEA 23일 미만=공항 부족 임계점</span> &nbsp;|&nbsp;
-  <span style="color:#fdba74">Brent $105.07(Apr 23) | EU 4/22 비상계획: 27개국 공유 메커니즘 | 스페인 80~85% 자체 정제</span> &nbsp;|&nbsp;
-  <span style="color:#fde68a">IEA: 오스트리아·불가리아·폴란드 "안정" | 영국·네덜란드 "위험" | 네덜란드 정부: "~5개월 충당 가능"</span>
+  📌 <strong>May 1 (D+62) 핵심 업데이트:</strong>
+  <span style="color:#f87171">LEVEL 5: 이탈리아(Air BP 배급) · 슬로베니아(EU최초) · 아일랜드(봉쇄) · 방글라데시(QR배급) · 이집트(30%감축) · 스리랑카(15L/주)</span> &nbsp;|&nbsp;
+  <span style="color:#fdba74">LEVEL 4: 영국·독일·프랑스·호주(30일)·NZ(27일)·필리핀(38일) | 후자이라 재고 전쟁이후 66%↓(S&P Global)</span> &nbsp;|&nbsp;
+  <span style="color:#fde68a">LEVEL 3: 태국(95일·과잉·수출재개검토) · 한국·일본(200일+) | 5월 한국·일본 수출 4월 대비 2배↑</span> &nbsp;|&nbsp;
+  <span style="color:#86efac">Brent $114.01(Apr 30) · 최고 $118.03(Apr 29) | MOPS: 전쟁 前 ~$84 → 최고 $242.70(3/30) → Apr 30 $186.45</span>
 </div>
 
 <div id="stats">
-  <div class="si">CRITICAL: <span>~15개국</span></div>
-  <div class="si">HIGH: <span>~18개국·지역</span></div>
-  <div class="si">IATA 경고: <span>"5월 말 유럽 결항 시작 가능" — Willie Walsh Apr 17</span></div>
-  <div class="si">Lufthansa: <span>2만편 취소(~Oct) · 4만톤 절감</span></div>
-  <div class="si">Brent Apr23: <span>$105.07 ★최신 (+46% vs 전쟁前)</span></div>
-  <div class="si">WTI Apr23: <span>$95.85</span></div>
-  <div class="si">Dubai Apr23: <span>$104.81</span></div>
-  <div class="si">뉴질랜드: <span>총 40일 / 현지 14일</span></div>
-  <div class="si">호주: <span>~21일 (3/24 기준 30일→감소, 국내 정제 17%)</span></div>
-  <div class="si">출처: <span>IATA Apr 17 · IEA Apr 17 · Euronews Apr 22 · Al Jazeera Apr 23 · FTNnews Apr 23 · IEEFA Mar 24</span></div>
+  <div class="si">LEVEL 5 (배급·차단): <span>이탈리아·슬로베니아·아일랜드·방글라데시·이집트·스리랑카</span></div>
+  <div class="si">LEVEL 4 (비축위기): <span>영국·독일·프랑스·호주·NZ·필리핀·베트남·미얀마 등 29개</span></div>
+  <div class="si">LEVEL 3 (완충): <span>태국(95일·과잉) · 한국·일본(200일+) · 터키(80% 자국)</span></div>
+  <div class="si">IATA Jet Fuel (w/e Apr 28): <span>$179.46/bbl (↓2.8% WoW · 전쟁 前 $88 대비 +104%)</span></div>
+  <div class="si">Brent Apr 30: <span>$114.01</span></div>
+  <div class="si">WTI Apr 30: <span>$105.07</span></div>
+  <div class="si">IEA 임계점: <span>23일 미만 = 일부 공항 물리적 부족 위험</span></div>
+  <div class="si">출처: <span>IEA · IEEFA · MBIE NZ · CAAV · S&P Global · UPI Apr 24 · CNBC Apr 29</span></div>
 </div>
-
-<div id="ranktable">
-  <div id="rt-header">
-    <div id="rt-title">GLOBAL JET FUEL CRISIS TRACKER — Apr 24, 2026 오전 (D+55)</div>
-    <div id="rt-sub">IATA "5월말 유럽 결항 가능" | Lufthansa 2만편 취소 | IAG 소진 중 | Brent $105.07 · WTI $95.85 (Apr 23) | EU 4/22 비상계획 발효</div>
-  </div>
-  <div style="overflow-x:auto">
-  <table id="rt-table">
-    <thead>
-      <tr>
-        <th>순위</th><th>국가/공항</th><th>가용일 (Apr 24)</th><th>예상 소진일</th><th>상태</th><th>위험등급</th>
-      </tr>
-    </thead>
-    <tbody id="rt-body"></tbody>
-  </table>
-  </div>
-</div>
-
-<style>
-#ranktable{background:#1e293b;border-top:2px solid #991b1b;padding:14px 16px 16px}
-#rt-title{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
-#rt-sub{font-size:10px;color:#94a3b8;line-height:1.55;margin-bottom:10px;background:#0f172a;padding:5px 8px;border-radius:4px;border-left:3px solid #f43f5e}
-#rt-table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
-#rt-table th{background:#0f172a;color:#94a3b8;font-weight:700;padding:6px 8px;text-align:center;border-bottom:1px solid #334155;font-size:10px;white-space:nowrap}
-#rt-table th:nth-child(1){width:42px}
-#rt-table th:nth-child(2){width:18%;text-align:left}
-#rt-table th:nth-child(3){width:14%}
-#rt-table th:nth-child(4){width:13%}
-#rt-table th:nth-child(5){width:22%;text-align:left}
-#rt-table th:nth-child(6){width:10%}
-#rt-table td{padding:5px 8px;border-bottom:1px solid rgba(51,65,85,.5);text-align:center;vertical-align:middle}
-#rt-table td:nth-child(2){text-align:left;font-weight:600}
-#rt-table td:nth-child(5){text-align:left}
-#rt-table tr:hover td{background:rgba(255,255,255,.04)}
-.lvl5{background:rgba(153,27,27,.55)!important;color:#fca5a5}
-.lvl4{background:rgba(194,65,12,.45)!important;color:#fdba74}
-.lvl3{background:rgba(212,172,13,.35)!important;color:#fef08a}
-.lvl2{background:rgba(46,134,193,.35)!important;color:#93c5fd}
-.badge{display:inline-block;padding:1px 6px;border-radius:8px;font-size:9.5px;font-weight:700;white-space:nowrap}
-.b5{background:#991b1b;color:#fca5a5}
-.b4{background:#c2410c;color:#fdba74}
-.b3{background:#b45309;color:#fef3c7}
-.b2{background:#1d4ed8;color:#bfdbfe}
-</style>
-
-<script>
-(function(){
-const ROWS=[
-  [1,"미얀마","소진","소진","운항 중단","LEVEL 5",5],
-  [2,"캄보디아","소진","소진","CRITICAL","LEVEL 5",5],
-  [3,"라오스","소진","소진","CRITICAL","LEVEL 5",5],
-  [4,"베트남","소진","소진","CRITICAL","LEVEL 5",5],
-  [5,"마다가스카르","소진 임박","즉시","CRITICAL","LEVEL 5",5],
-  [6,"방글라데시","1-2일","Apr 25","QR 배급중","LEVEL 5",5],
-  [7,"필리핀","1-2일","Apr 25-26","국가비상 — 7월 배급화","LEVEL 5",5],
-  [8,"이탈리아","2-4일","Apr 24-26","배급제 지속","LEVEL 5",5],
-  [9,"잠비아","~3일","Apr 27","CRITICAL","LEVEL 5",5],
-  [10,"아일랜드","3-4일","Apr 24-27","CRITICAL","LEVEL 5",5],
-  [11,"슬로베니아","3-4일","Apr 24-27","EU최초 배급","LEVEL 5",5],
-  [12,"영국","3-6일","Apr 24-27","CRITICAL — IAG '소진 중'","LEVEL 5",5],
-  [13,"파키스탄","~4일","Apr 28","NOTAM 발효","LEVEL 5",5],
-  [14,"이집트","불안정","즉시","9PM 통행금지","LEVEL 5",5],
-  [15,"스리랑카","15L/주 배급","즉시배급","CRITICAL","LEVEL 5",5],
-  [16,"HNL (호놀룰루) PADD5","~2일","Apr 26","⚠ PADD5 最취약","LEVEL 4",4],
-  [17,"LAX (LA) PADD5","~4일","Apr 28","⚠ PADD5 HIGH","LEVEL 4",4],
-  [18,"그리스","~7일","Apr 30-May1","HIGH — 여름 성수기","LEVEL 4",4],
-  [19,"에티오피아","~7일","May 1","HIGH","LEVEL 4",4],
-  [20,"ANC (앵커리지) PADD5","~7일","May 1","⚠ PADD5 HIGH","LEVEL 4",4],
-  [21,"독일","7-9일","Apr 30-May2","HIGH — Lufthansa 그룹 2만편","LEVEL 4",4],
-  [22,"태국","~9일","May 3","HIGH + 수출금지","LEVEL 4",4],
-  [23,"프랑스","9-14일","May 3-8","HIGH — TotalEnergies '6월 공급 불가'","LEVEL 4",4],
-  [24,"스페인","9-13일","May 3-7","HIGH — 자체 정제 80~85%","LEVEL 4",4],
-  [25,"말레이시아","~10일","May 4","HIGH","LEVEL 4",4],
-  [26,"포르투갈","~13일","May 7","HIGH","LEVEL 4",4],
-  [27,"인도네시아","~14일","May 8","HIGH","LEVEL 4",4],
-  [28,"네덜란드","15-19일","May 9-13","HIGH — IEA '위험'","LEVEL 4",4],
-  [29,"덴마크","~17일","May 11","HIGH","LEVEL 4",4],
-  [30,"호주","~21일","May 15","HIGH — 국내 정제 17%","LEVEL 4",4],
-  [31,"케냐","~25일","May 19","HIGH","LEVEL 4",4],
-  [32,"스웨덴/노르웨이","~22일","May 16","HIGH","LEVEL 4",4],
-  [33,"남아공","12-19일","May 6-13","HIGH","LEVEL 4",4],
-  [34,"싱가포르","12-38일","May-Jun","MONITORING","LEVEL 4",4],
-  [35,"일본","~38일","Jun 1","HIGH","LEVEL 4",4],
-  [36,"뉴질랜드","총40일 / 현지14일","Jun 3","선박지연 주의","LEVEL 3",3],
-  [37,"체코","~23-33일","May 中","MODERATE","LEVEL 3",3],
-  [38,"슬로바키아","~23-33일","May 中","MODERATE","LEVEL 3",3],
-  [39,"헝가리","~23-33일","May 中","MODERATE","LEVEL 3",3],
-  [40,"루마니아","~28-38일","May~Jun","MODERATE — 흑해 항구 완충","LEVEL 3",3],
-  [41,"한국","~35일","May 29","MODERATE — 5월 할증 33단계","LEVEL 3",3],
-  [42,"대만","~30일","May 24","ELEVATED","LEVEL 3",3],
-  [43,"인도","~35일","May 29","할증 +130%","LEVEL 3",3],
-  [44,"터키","~36일","May 30","MODERATE — 자체정유","LEVEL 3",3],
-  [45,"오스트리아 ★","비축 안정","-","STABLE — IEA '안정적'","LEVEL 2",2],
-  [46,"불가리아 ★","비축 안정","-","STABLE — IEA '안정적'","LEVEL 2",2],
-  [47,"폴란드 ★","비축 안정","-","STABLE — IEA '안정적'","LEVEL 2",2],
-  [48,"중국","~50일","Jun 13","수출금지","LEVEL 2",2],
-  [49,"미국 본토","~45일","Jun 8","노선 -5%","LEVEL 2",2],
-];
-const BMAP={5:"b5",4:"b4",3:"b3",2:"b2"};
-const RMAP={5:"lvl5",4:"lvl4",3:"lvl3",2:"lvl2"};
-const tb=document.getElementById("rt-body");
-ROWS.forEach(([rank,name,days,depl,status,urgency,lvl])=>{
-  const tr=document.createElement("tr");
-  tr.className=RMAP[lvl];
-  tr.innerHTML=`
-    <td style="font-weight:700;color:#f1f5f9">${rank}</td>
-    <td>${name}</td>
-    <td style="font-weight:600">${days}</td>
-    <td style="color:#94a3b8">${depl}</td>
-    <td>${status}</td>
-    <td><span class="badge ${BMAP[lvl]}">${urgency}</span></td>`;
-  tb.appendChild(tr);
-});
-})();
-</script>
 
 <div id="tooltip">
   <div class="tn" id="tt-n"></div>
@@ -235,340 +152,459 @@ ROWS.forEach(([rank,name,days,depl,status,urgency,lvl])=>{
   <div class="tt" id="tt-t"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<!-- 랭킹 테이블 -->
+<div id="ranktable">
+  <div id="rt-title">GLOBAL JET FUEL CRISIS TRACKER — May 1, 2026 (D+62)</div>
+  <div id="rt-sub">LEVEL 5: 배급·차단 확인 6국 | LEVEL 4: 비축위기 29개 | 태국 95일(과잉)·한국 200일+ | Brent $114.01(Apr 30) · WTI $105.07 | IATA JF w/e Apr28: $179.46/bbl</div>
+  <div style="overflow-x:auto">
+  <table id="rt-table">
+    <thead>
+      <tr>
+        <th>순위</th><th>국가/지역</th><th>상태 구분</th><th>주요 현황</th><th>등급</th>
+      </tr>
+    </thead>
+    <tbody id="rt-body"></tbody>
+  </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <script>
-// ── 국가 데이터 (Apr 24, 2026 D+55) ─────────────────────────────
+// ── 색상 정의 ─────────────────────────────────────────────────────
+const SC = {CRITICAL:'#991b1b', HIGH:'#c2410c', MODERATE:'#b45309', STABLE:'#1d4ed8'};
+const SE = {CRITICAL:'#fca5a5', HIGH:'#fdba74', MODERATE:'#fde68a', STABLE:'#93c5fd'};
+const SL = {
+  CRITICAL:'🔴 LEVEL 5 — 배급·차단 확인',
+  HIGH:'🟠 LEVEL 4 — 비축 위기',
+  MODERATE:'🟡 LEVEL 3 — 상대적 완충',
+  STABLE:'🔵 LEVEL 2 — 안정'
+};
+const LEVEL_CLASS = {CRITICAL:'lvl5',HIGH:'lvl4',MODERATE:'lvl3',STABLE:'lvl2'};
+const BADGE_CLASS  = {CRITICAL:'b5',HIGH:'b4',MODERATE:'b3',STABLE:'b2'};
+const BADGE_TEXT   = {CRITICAL:'LEVEL 5',HIGH:'LEVEL 4',MODERATE:'LEVEL 3',STABLE:'LEVEL 2'};
+
+// ── 국가 데이터 ───────────────────────────────────────────────────
 const DATA = {
-  // ── CRITICAL ──────────────────────────────────────────────────
-  "104":{ n:"미얀마",        d:"<3일",         s:"CRITICAL",
-    note:"국내선 전편 운항 중단\n인도산 긴급 협상 중(미확정)\n출처: Anchorage Today Apr 13" },
-  "116":{ n:"캄보디아",      d:"소진",         s:"CRITICAL",
-    note:"Phnom Penh 급유 중단\n국제선 50% 취소\n태국·베트남 수출금지 직격\n출처: Mekong Eye" },
-  "418":{ n:"라오스",        d:"소진",         s:"CRITICAL",
-    note:"정유 없음 — 완전 고립\n중국에 비상 SOS\n출처: Mekong Eye" },
-  "894":{ n:"잠비아",        d:"~10일",        s:"CRITICAL",
-    note:"정부 공식 확인: 10일분\n패닉 바잉·매점 경고\n출처: Zawya / Reuters Mar" },
-  "450":{ n:"마다가스카르",  d:"~2일",           s:"CRITICAL",
-    note:"CITAC: 아프리카 최취약국\n자체 정유 없음\n출처: African Security Analysis" },
-  "818":{ n:"이집트",        d:"불안정",        s:"CRITICAL",
-    note:"오후 9시 통행금지+상업 30% 감축\n월 에너지비용 $560M→$1.65B\n출처: powerboat.news Apr 15" },
-  "144":{ n:"스리랑카",      d:"15L/주 배급",    s:"CRITICAL",
-    note:"개인 15L/주 배급제\n4일 근무제(정부·학교)\n출처: powerboat.news Apr 15" },
-  "704":{ n:"베트남",        d:"소진",            s:"CRITICAL",
-    note:"Skypec 공급 불보장\nVietJet 감편. 중국·태국 수출금지\n70% 공급원 차단\n출처: CAAV / 파이낸셜뉴스" },
-  "372":{ n:"아일랜드",      d:"3-4일",        s:"CRITICAL",
-    note:"Whitegate 봉쇄. 주유소 600곳 고갈 / Global Energy Flow곳 이상 고갈\nWhitegate 정유소 봉쇄\n출처: Global Energy Flow Apr 12" },
-  "705":{ n:"슬로베니아",    d:"3-4일",        s:"CRITICAL",
-    note:"EU 최초 50L/일 배급 지속 / Global Energy Flow 공식 배급제\n50L/일(개인)/200L(사업)\n출처: Global Energy Flow Apr 12" },
-  "608":{ n:"필리핀",        d:"~3일",           s:"CRITICAL",
-    note:"Marcos 국가에너지비상사태\nCebu Pacific 노선 중단\n출처: Foreign Policy Mar 31" },
-  "380":{ n:"이탈리아",      d:"3-5일",       s:"CRITICAL",
-    note:"7개 공항 Air BP NOTAM 지속\n2,000L/기 상한(단거리)\n출처: FTNnews Apr 9" },
-  "826":{ n:"영국",          d:"4-7일",       s:"CRITICAL",
-    note:"IEA '약 6주' 경고(Apr 17)\n쿠웨이트 의존 유럽 최고\nRyanair 5~10% 감편 경고\n출처: AP / IEA Apr 17" },
-  "050":{ n:"방글라데시",    d:"1-2일",        s:"CRITICAL",
-    note:"QR코드 배급제 시행\n원유 95% 수입 → 즉각 위기\n주유소 약탈·사망 발생\n출처: Time Apr 5" },
-  "586":{ n:"파키스탄",      d:"~4일",        s:"CRITICAL",
-    note:"Jet A-1 NOTAM(4/1~). 외환 부족 / Reuters NOTAM(4/1~)\n조종사 최대 연료 탑재 의무\n출처: Reuters / AP" },
-  // ── HIGH ──────────────────────────────────────────────────────
-  "276":{ n:"독일",          d:"7-9일",       s:"HIGH",
-    note:"Lufthansa CityLine 즉시 폐쇄\n(고연료비+파업 이중악재)\nCTO: '공급업체 1개월 전망 거부'\n출처: Al Jazeera / AP Apr 17" },
-  "392":{ n:"일본",          d:"~38일",      s:"HIGH",
-    note:"역대 최대 SPR 방출(국가 1개월분)\n일부 공항 외국적 급유 제한\n출처: NRI Apr 8" },
-  "300":{ n:"그리스",        d:"~7일",        s:"HIGH",
-    note:"여름 성수기 진입. 지중해 동부 31k bpd 평시 / ACI Europe 동부 여름 성수기 압박\n평시 31,000bpd 수신\n출처: ACI Europe" },
-  "764":{ n:"태국",          d:"~9일",        s:"HIGH",
-    note:"수출 전면 금지. 자국 우선 / The Diplomat 금지(캄·라오 제외)\n자국 수요 우선\n출처: The Diplomat" },
-  "250":{ n:"프랑스",        d:"9-14일",     s:"HIGH",
-    note:"IEA Apr 17: '프랑스 — 중간 수준'\nTotalEnergies CEO: '6월 봉쇄 시 전 고객 공급 불가'\nAF-KLM 탱커링. 주유소 18% 고갈\n3개 정유소 완충\n출처: Euronews Apr 16 / TotalEnergies" },
-  "724":{ n:"스페인",        d:"10-15일",    s:"HIGH",
-    note:"경제장관: '자국 정유로 덜 취약'\n이란 통항 허가\n출처: Majorca Daily Bulletin Apr 14" },
-  "036":{ n:"호주",          d:"~21일",      s:"HIGH",
-    note:"3/24 기준 30일 → ~21일. 국내 정제 17% / IEEFA: 항공유 28일(4/7 기준)\n57척 운항 중. Qantas -5%\n6월 위험구간\n출처: DCCEEW / Switzer Apr 16" },
-  "528":{ n:"네덜란드",      d:"15-19일",    s:"HIGH",
-    note:"IEA Apr 17: '영국·아이슬란드·네덜란드 = 위험 상황'\nKLM 5월 160편 취소. ARA 재고↓\n출처: Euronews Apr 16 / AP Apr 17" },
-  "208":{ n:"덴마크",        d:"~17일",      s:"HIGH",
-    note:"4/11 코펜하겐 최종 탱커\n이후 입고 없음\n출처: Travel&TourWorld Apr 11" },
-  "620":{ n:"포르투갈",      d:"~13일",      s:"HIGH",
-    note:"4/10 이후 신규 입고 없음\n출처: Argus Media" },
-  "752":{ n:"스웨덴(SAS)",   d:"~23일",      s:"HIGH",
-    note:"SAS 1,000편 4월 취소\n소형 공항 위험\n출처: Travel&TourWorld Apr 11" },
-  "578":{ n:"노르웨이",      d:"~23일",      s:"HIGH",
-    note:"소형 내륙 공항 취약\n딥워터 항구 없음\n출처: Travel&TourWorld Apr 11" },
-  "458":{ n:"말레이시아",    d:"~10일",      s:"HIGH",
-    note:"AirAsia X 요금 40%↑\nBatik Air 36% 감편\n출처: The Diplomat" },
-  "360":{ n:"인도네시아",    d:"~14일",      s:"HIGH",
-    note:"정유사 force majeure\nB50 바이오디젤 가속\n출처: NPR Mar 26" },
-  "554":{ n:"뉴질랜드",      d:"총40일/현지14일",s:"HIGH",
-    note:"MBIE Apr 17: 총 47일, 현지 21.3일\n선박 1척 지연(싱가포르 혼잡)\nPhase 1 유지. 선박 지연 증가 추세\n출처: MBIE / 1News Apr 15" },
-  "404":{ n:"케냐",          d:"~25일",      s:"HIGH",
-    note:"JKA 72시간 경보(3월)\nKenya Airways 장거리 취소 위협\n아프리카 호르무즈 의존 70%\n출처: Nomad Lawyer / Zawya" },
-  "710":{ n:"남아공",        d:"12-19일",    s:"HIGH",
-    note:"FlySafair 운영비 70%↑\n정유소 2개(Sasol+Astron)\n출처: Reuters / TRT Afrika" },
-  "231":{ n:"에티오피아",    d:"~7일",       s:"HIGH",
-    note:"디젤 50% 감소\nEthiopian Airlines 완충\n출처: Global Energy Flow Apr 12" },
-  "702":{ n:"싱가포르",      d:"12-38일",    s:"HIGH",
-    note:"호주·말레이 협력\nSAF 부과금 10월 연기\n출처: SE Asia Brief" },
-  // ── MODERATE ──────────────────────────────────────────────────
-  "410":{ n:"한국",          d:"~35일",      s:"MODERATE",
-    note:"비축유 방출 없이 4~5월 통과\n5월 물량 80% 확보\n⚠ PADD5 공급원: 한국→ANC/LAX/HNL 86%\n출처: 산업통상부 Apr 12" },
-  "792":{ n:"터키",          d:"~36일",      s:"MODERATE",
-    note:"Tüpraş+SOCAR STAR → IST 연간 250만톤(80% 자국)\n터키항공 Gulf 4/24까지 중단\n유럽 우회 허브\n출처: Energy Intelligence Jan 2025" },
-  "156":{ n:"중국",          d:"~50일",      s:"MODERATE",
-    note:"수출금지(3/11). 내수 우선\n출처: Reuters" },
-  "840":{ n:"미국(본토)",    d:"~45일",      s:"MODERATE",
-    note:"United -5%. IEA 400Mbbl 방출\n★ ANC·LAX·HNL PADD5 HIGH 별도 참조\n출처: AP Apr 17" },
-  "356":{ n:"인도",          d:"~35일",      s:"MODERATE",
-    note:"ATF 130% 급등. 정부 25% 상한\nIndiGo·Air India 할증\n출처: BusinessToday Mar" },
-  // ── 동유럽 ★ Apr 17 IEA 국가별 직접 평가 ─────────────────────
-  "040":{ n:"오스트리아 ★",  d:"비축 안정",    s:"STABLE",
-    note:"★ IEA Apr 17 직접 언급: '오스트리아·불가리아·폴란드 — 비축 안정적'\n자국 정유+내륙 파이프라인망 완충\n출처: Euronews Apr 16 / IEA" },
-  "100":{ n:"불가리아 ★",    d:"비축 안정",    s:"STABLE",
-    note:"★ IEA Apr 17 직접 언급: '오스트리아·불가리아·폴란드 — 비축 안정적'\n흑해 항로 이용 가능. 러시아산 원유 일부\n출처: Euronews Apr 16 / IEA" },
-  "616":{ n:"폴란드 ★",      d:"비축 안정",    s:"STABLE",
-    note:"★ IEA Apr 17 직접 언급: '오스트리아·불가리아·폴란드 — 비축 안정적'\nOrlen 정유그룹. 발트해 항로 활용\n출처: Euronews Apr 16 / IEA" },
-  "203":{ n:"체코",          d:"~30-40일",     s:"MODERATE",
-    note:"내륙국. 딥워터 항구 없음\nOrlen 리투아노비체 정유소 연결\nWizz Air €50M 손실 전망\n출처: IEA 유럽 평균 / CNBC Apr 14" },
-  "703":{ n:"슬로바키아",    d:"~30-40일",     s:"MODERATE",
-    note:"내륙국. Slovnaft 정유소(MOL 그룹)\n동유럽 파이프라인망 연결로 상대적 안정\n출처: IEA 유럽 평균" },
-  "348":{ n:"헝가리",        d:"~30-40일",     s:"MODERATE",
-    note:"MOL 그룹 자체 정유소\n내륙 파이프라인 연결\n출처: IEA 유럽 평균" },
-  "642":{ n:"루마니아",      d:"~35-45일",     s:"MODERATE",
-    note:"Petromidia·Rompetrol 자체 정유소\n흑해 항구(콘스탄차) 활용 — 상대적 완충\n출처: IEA 유럽 평균" },
-  // ── STABLE ────────────────────────────────────────────────────
-  "682":{ n:"사우디아라비아", d:"자국생산",    s:"STABLE",
-    note:"Yanbu 파이프라인 대체 수출\n한국·일본 공급 약속" },
-  "784":{ n:"UAE",           d:"자국생산",     s:"STABLE",
-    note:"Fujairah 항 인도양 직접 수출\nADCOP 파이프라인 가동" },
-  "124":{ n:"캐나다",        d:"~75일",        s:"STABLE",
-    note:"자국 정제 능력. Jones Act 무관" },
+  // LEVEL 5 — 배급·차단 공식 확인
+  '380':{s:'CRITICAL',n:'이탈리아',d:'배급 시행 중',t:'Air BP 공식 NOTAM\n7개 공항 2,000L/기 상한 배급\n볼로냐·밀라노 리나테·베네치아·트레비소 등\n출처: FTNnews Apr 9'},
+  '705':{s:'CRITICAL',n:'슬로베니아',d:'EU 최초 공식 배급',t:'개인 50L/일·사업 200L/일 상한(3/23~)\n슬로베니아 에너지청 공식 발표\n출처: Global Energy Flow'},
+  '372':{s:'CRITICAL',n:'아일랜드',d:'Whitegate 봉쇄',t:'유일 정유소 봉쇄(4/7~)\n주유소 600곳+ 고갈\n출처: Global Energy Flow Apr 12'},
+  '050':{s:'CRITICAL',n:'방글라데시',d:'QR코드 배급 시행',t:'정부 QR코드 연료 배급제 공식 시행\n주유소 약탈·폭력 사태\n출처: Time Apr 5 / bdnews24'},
+  '818':{s:'CRITICAL',n:'이집트',d:'소비 30% 감축 명령',t:'정부: 오후 9시 상업시설 30% 감축 의무\n출처: powerboat.news / Al-Ahram'},
+  '144':{s:'CRITICAL',n:'스리랑카',d:'15L/주 배급',t:'Ceylon Petroleum: 개인 15L/주 배급제\n정부 4일 근무제\n출처: Ceylon Petroleum Corp.'},
+  // LEVEL 4 — 비축 위기·감편·공급 압박
+  '104':{s:'HIGH',n:'미얀마',d:'공급 극히 제한',t:'자체 정제 없음\n태국·중국 수출금지로 공급선 차단\n출처: Myanmar Now'},
+  '116':{s:'HIGH',n:'캄보디아',d:'공급 극히 제한',t:'자체 정제 없음\n프놈펜 공항 항공유 배급 보고\n출처: Mekong Eye'},
+  '418':{s:'HIGH',n:'라오스',d:'공급 극히 제한',t:'자체 정제 없음\n주유소 약 40% 고갈 보고\n출처: Vientiane Times'},
+  '704':{s:'HIGH',n:'베트남',d:'공급 불확실',t:'CAAV: 공급 3월까지만 보장\nVietnam Airlines 주 23편·7개 노선 중단\n출처: CAAV / Vietnam Airlines'},
+  '608':{s:'HIGH',n:'필리핀',d:'38일(3/20 기준)',t:'에너지부(3/20): 항공유 38일 비축\nPAL: 6월까지 확보, 이후 가시성 없음\n출처: 필리핀 에너지부 / Rappler'},
+  '826':{s:'HIGH',n:'영국',d:"IEA: 20일 미만",t:"IEA: 유럽 20일 미만 국가 중 하나\nIAG(BA): '공급 차단 없음, 가격만 급등'\nRyanair: 5~25% 차질 가능성 경고\n출처: IEA Apr 17 / CNBC Apr 29"},
+  '276':{s:'HIGH',n:'독일',d:'헤징 80% 완충',t:'Lufthansa 2026년분 80% 사전 헤징\n10월까지 단거리 2만편 취소\nCityLine 27기 중단\n출처: CNBC Apr 29 / Euronews Apr 22'},
+  '250':{s:'HIGH',n:'프랑스',d:"IEA: 20일 미만 포함",t:"IEA: 유럽 20일 미만 국가 포함\nTotalEnergies: '6월 봉쇄 시 공급 불가'\nAF-KLM 탱커링 도입\n출처: IEA / TotalEnergies"},
+  '528':{s:'HIGH',n:'네덜란드',d:"IEA '위험국'",t:"IEA Apr 17: '위험국' 명시\n정부: '약 5개월 충당 가능'\nKLM 5월 160편 취소(고비용)\n출처: IEA / 네덜란드 정부"},
+  '300':{s:'HIGH',n:'그리스',d:'20일 미만 추정',t:'ACI Europe: 유럽 20~23일 미만 경보\n여름 성수기 진입으로 수요 급증\n출처: ACI Europe'},
+  '620':{s:'HIGH',n:'포르투갈',d:"Argus '고취약국'",t:'4/10 이후 신규 탱커 입고 없음\n출처: Argus Media'},
+  '208':{s:'HIGH',n:'덴마크',d:'비축 감소',t:'4/11 코펜하겐 최종 탱커 이후 입고 없음\n출처: Travel&TourWorld Apr 11'},
+  '752':{s:'HIGH',n:'스웨덴',d:'비축 감소',t:'SAS 4월 1,000편+ 취소\n소형 내륙 공항 취약\n출처: Travel&TourWorld Apr 11'},
+  '578':{s:'HIGH',n:'노르웨이',d:'비축 감소',t:'SAS 취소. 소형 공항 취약\n출처: ACI Europe'},
+  '724':{s:'HIGH',n:'스페인',d:'유럽 순수출국',t:"SocGen(4/29): '유럽 드문 순수출국'\n자체 정제 비율 높음. EU 공유 메커니즘\n출처: CNBC Apr 29 / SocGen"},
+  '036':{s:'HIGH',n:'호주',d:'30일(3/24 기준)',t:'IEEFA: 항공유 30일 비축(IEA 최하위)\n국내 정제 소비의 17%\nQantas -5% 감편\n출처: IEEFA Mar 24'},
+  '554':{s:'HIGH',n:'뉴질랜드',d:'약 27일',t:"UPI(4/24): 약 27일 비축\nMBIE(4/30): '관리 가능. 최소 기준 이상'\nAir NZ 1,100편+ 취소\n출처: UPI Apr 24 / MBIE Apr 30"},
+  '458':{s:'HIGH',n:'말레이시아',d:'비축 미공개',t:'Petronas 자체 정제로 일부 완충\nAirAsia X 요금 40%↑\nBatik Air 국내선 36%↓\n출처: The Diplomat'},
+  '360':{s:'HIGH',n:'인도네시아',d:'force majeure',t:'Pertamina 불가항력(force majeure) 선언\nB50 바이오디젤 전환 가속\n출처: NPR / Kompas'},
+  '356':{s:'HIGH',n:'인도',d:'자체 공급 지속',t:'IOCL·HPCL·BPCL 자체 공급 지속\nATF 가격 130%↑. 정부 상한 검토\nIndiGo·Air India 할증\n출처: BusinessToday / DGCA'},
+  '392':{s:'HIGH',n:'일본',d:'200일+ 비축',t:'IEEFA: 200일+ 비축\n일부 공항 외국 항공기 급유 제한(자국 우선)\n5월 수출 4월 대비 2배↑\n출처: IEEFA / NRI'},
+  '702':{s:'HIGH',n:'싱가포르',d:'허브 기능 유지',t:'Changi 공항 정상 운영\n미국 EU향 수출 150k bpd 부분 완충\n출처: EMA Singapore'},
+  '404':{s:'HIGH',n:'케냐',d:'공급 압박',t:'나이로비 JKA 72시간 고갈 경보(3월)\nKenya Airways 장거리 위협\n출처: Nomad Lawyer / Zawya'},
+  '710':{s:'HIGH',n:'남아프리카공화국',d:'비용 폭증',t:'FlySafair 운영비 70%↑ 공식 발표\n정유소 2개(Sasol+Astron Energy)\n출처: FlySafair / Reuters'},
+  '231':{s:'HIGH',n:'에티오피아',d:'비축 미공개',t:'디젤 공급 절반 수준\nEthiopian Airlines 자체 MRO로 완충\n출처: Global Energy Flow Apr 12'},
+  '586':{s:'HIGH',n:'파키스탄',d:'NOTAM 발효',t:'Jet A-1 NOTAM(4/1~): 최대 연료 탑재 의무\n외환 부족으로 대체 원유 확보 난항\n출처: Pakistan CAA'},
+  // LEVEL 3 — 상대적 완충
+  '764':{s:'MODERATE',n:'태국',d:'95일 비축 (과잉)',t:'IEEFA: 95일 비축\n수출금지(3/6~)로 재고 포화 직전\n에너지부: Jet A-1 수출 재개 검토 중\nThai Airways 5월 46편+ 취소(가격·수요)\n출처: IEEFA / Nation Thailand Apr 25'},
+  '410':{s:'MODERATE',n:'한국',d:'200일+ 비축',t:'IEEFA: 200일+ 비축\n전세계 항공유 수출 30%(251,000bpd)\n5월 수출 4월 대비 2배↑\n5월 유류할증료 33단계(역대 최고)\n출처: UPI Apr 24 / IEEFA'},
+  '792':{s:'MODERATE',n:'터키',d:'80% 자국 충당',t:'Tüpraş+SOCAR STAR: IST 연간 250만톤(80% 자국)\n유럽 우회 허브 기능 유지\n출처: Energy Intelligence / CNBC Apr 29'},
+  '156':{s:'MODERATE',n:'중국',d:'비축 충분',t:'수출금지(3/11~) — 홍콩·마카오·항공급유 제외\n5월 이후 일부 수출 재개 타진\n출처: Sinopec IR / Reuters'},
+  '203':{s:'MODERATE',n:'체코',d:'파이프라인 완충',t:'Orlen 정유그룹 연결\n동유럽 파이프라인 완충\n출처: IEA Apr 17'},
+  '703':{s:'MODERATE',n:'슬로바키아',d:'자체 정제',t:'Slovnaft(MOL) 자체 정제\n출처: IEA Apr 17'},
+  '348':{s:'MODERATE',n:'헝가리',d:'자체 정제',t:'MOL 그룹 자체 정유소\n출처: IEA Apr 17'},
+  '642':{s:'MODERATE',n:'루마니아',d:'흑해 항구 완충',t:'Petromidia·Rompetrol 자체 정제\n흑해 항구(콘스탄차) 완충\n출처: IEA Apr 17'},
+  // LEVEL 2 — 안정
+  '040':{s:'STABLE',n:'오스트리아',d:"IEA '안정적' 명시",t:"IEA Apr 17: '비축량 안정적' 직접 명시\n자국 정유+내륙 파이프라인\n출처: IEA Apr 17 / Euronews Apr 16"},
+  '100':{s:'STABLE',n:'불가리아',d:"IEA '안정적' 명시",t:"IEA Apr 17: '비축량 안정적' 직접 명시\n흑해 항로 활용\n출처: IEA Apr 17 / Euronews Apr 16"},
+  '616':{s:'STABLE',n:'폴란드',d:"IEA '안정적' 명시",t:"IEA Apr 17: '비축량 안정적' 직접 명시\nOrlen 정유그룹 + 발트해 항로\n출처: IEA Apr 17 / Euronews Apr 16"},
+  '840':{s:'STABLE',n:'미국 본토',d:'물리적 부족 없음',t:"EIA: '물리적 부족 없음'\n주요 원유 생산국. EU향 150,000bpd 수출(평시 6배)\n출처: EIA STEO / PBS Apr 17"},
+  '124':{s:'STABLE',n:'캐나다',d:'물리적 부족 없음',t:'자국 원유 생산\n출처: NRCan'},
 };
 
-
-// PADD5 공항 (국가 외 별도 마커)
-const AIRPORTS = [
-  { id:"ANC", name:"ANC — 앵커리지", lat:61.17, lon:-149.99, s:"HIGH",
-    d:"~7일",  depl:"May 1",
-    note:"⚠ PADD5 HIGH\n한국산 86%(31,000bpd) — 한국 감산 직격\nDelta LAX-ANC 영구 폐선\nJones Act 선박만 대안(49척)\n연료비 $2.85~3.10/갤런" },
-  { id:"LAX", name:"LAX — 로스앤젤레스", lat:33.94, lon:-118.41, s:"HIGH",
-    d:"~4일",  depl:"Apr 28",
-    note:"⚠ PADD5 HIGH\nPhillips66 Rodeo + Valero Benicia 폐쇄\n국내 정제 -25,000bpd 소멸\n가스 $6+/갤런\nUnited -5% 전술적 감편" },
-  { id:"HNL", name:"HNL — 호놀룰루", lat:21.32, lon:-157.92, s:"HIGH",
-    d:"~8일", depl:"Apr 25",
-    note:"⚠ PADD5 最취약\n정유소 없음 / 파이프라인 없음\nRed Hill 비축시설 2023 폐쇄\n한국산 28,000bpd 전량 해상 수입\n태평양 노선 = 세계 최고 연료집약" },
-];
-
-const SC = {CRITICAL:"#991b1b", HIGH:"#c2410c", MODERATE:"#b45309", STABLE:"#1d4ed8"};
-const SE = {CRITICAL:"#fca5a5", HIGH:"#fdba74", MODERATE:"#fde68a", STABLE:"#93c5fd"};
-const SL = {CRITICAL:"위기 CRITICAL", HIGH:"높음 HIGH", MODERATE:"보통 MODERATE", STABLE:"안정 STABLE"};
-const FRANCE_ID = "250";
-
-const W=960, H=500;
-const svg = d3.select("#worldmap");
-const proj = d3.geoNaturalEarth1().scale(153).translate([W/2, H/2+25]);
-const geoPath = d3.geoPath(proj);
-
-const tt = document.getElementById("tooltip");
-function showTip(e, n, s, d, note){
-  document.getElementById("tt-n").textContent = n;
-  const sel = document.getElementById("tt-s");
-  sel.textContent = SL[s] || s;
-  sel.style.color = SE[s] || "#fff";
-  document.getElementById("tt-d").textContent = "항공유 가용: " + d;
-  document.getElementById("tt-t").textContent = note;
-  tt.style.display = "block"; moveTip(e);
+// 프랑스 본토 필터 (남미 프랑스령 제외)
+function isFranceMainland(feature, proj, geoPath){
+  try{
+    // 각 꼭짓점(vertex)의 중심이 아닌 경계상자 기반 체크
+    const centroid = geoPath.centroid(feature);
+    if(!centroid || isNaN(centroid[0])) return false;
+    const inv = proj.invert(centroid);
+    if(!inv) return false;
+    const lon = inv[0], lat = inv[1];
+    // 유럽 본토 프랑스: 경도 -5~9, 위도 42~52 (기아나·마르티니크 등 완전 배제)
+    return lon > -5.5 && lon < 9.5 && lat > 42.0 && lat < 51.5;
+  }catch(e){ return false; }
 }
-function moveTip(e){
-  let x=e.clientX+14, y=e.clientY+14;
-  if(x+275>window.innerWidth)  x=e.clientX-280;
-  if(y+210>window.innerHeight) y=e.clientY-215;
-  tt.style.left=x+"px"; tt.style.top=y+"px";
-}
-function hideTip(){ tt.style.display="none"; }
-document.addEventListener("mousemove", e=>{ if(tt.style.display!=="none") moveTip(e); });
 
-function isFranceMainland(feature){
-  const c=geoPath.centroid(feature);
-  if(!c||isNaN(c[0])) return false;
-  const inv=proj.invert(c);
-  if(!inv) return false;
-  return inv[0]>-6 && inv[0]<10 && inv[1]>42 && inv[1]<52;
-}
-function getInfo(feature){
-  const id=String(feature.id).padStart(3,"0");
-  const info=DATA[id];
+function getInfo(feature, proj, geoPath){
+  const id = String(feature.id).padStart(3,'0');
+  const info = DATA[id];
   if(!info) return null;
-  if(id===FRANCE_ID && !isFranceMainland(feature)) return null;
+  if(id==='250' && !isFranceMainland(feature, proj, geoPath)) return null;
   return info;
 }
 
-let currentFilter = "ALL";
+// PADD5 공항
+const AIRPORTS = [
+  {id:'ANC',name:'ANC — 앵커리지',lat:61.17,lon:-149.99,
+   note:'⚠ PADD5 HIGH\n한국산 86%(31,000bpd)\nDelta LAX-ANC 폐선\n5월 수출 2배↑로 완충'},
+  {id:'LAX',name:'LAX — 로스앤젤레스',lat:33.94,lon:-118.41,
+   note:'⚠ PADD5 HIGH\nPhillips66+Valero 폐쇄(-25k bpd)\n2.6M bbl(역사 저점)\n가격위기·정상 운항'},
+  {id:'HNL',name:'HNL — 호놀룰루',lat:21.32,lon:-157.92,
+   note:'⚠ PADD5 最취약\n자체 정유소·파이프라인 없음\nRed Hill 2023 폐쇄\n한국산 28,000bpd 해상 수입'},
+];
+
+// 랭킹 테이블 데이터
+const ROWS = [
+  [1,'이탈리아 (7개 공항)','Air BP NOTAM 배급','7개 공항 2,000L/기 상한 배급 시행','CRITICAL'],
+  [2,'슬로베니아','EU 최초 공식 배급','개인 50L/일 상한(3/23~)','CRITICAL'],
+  [3,'아일랜드','Whitegate 봉쇄','유일 정유소 봉쇄 · 주유소 600곳+ 고갈','CRITICAL'],
+  [4,'방글라데시','QR코드 배급 시행','정부 공식 배급제 · 약탈 발생','CRITICAL'],
+  [5,'이집트','소비 30% 감축','9PM 상업시설 30% 의무 감축','CRITICAL'],
+  [6,'스리랑카','15L/주 배급','Ceylon Petroleum 공식 배급','CRITICAL'],
+  [7,'미얀마','공급 극히 제한','자체 정제 없음 · 태국·중국 수출금지','HIGH'],
+  [8,'캄보디아','공급 극히 제한','공항 배급 보고','HIGH'],
+  [9,'라오스','공급 극히 제한','주유소 약 40% 고갈','HIGH'],
+  [10,'베트남','공급 불확실','CAAV: 3월까지만 보장 · 대규모 감편','HIGH'],
+  [11,'필리핀','38일(3/20 기준)','PAL 6월까지 확보 · 이후 가시성 없음','HIGH'],
+  [12,'영국','IEA: 20일 미만','IAG 차단 없음 · Ryanair 차질 경고','HIGH'],
+  [13,'독일','헤징 80%','Lufthansa 2만편 취소(~Oct)','HIGH'],
+  [14,'프랑스','IEA: 20일 미만','TotalEnergies 6월 공급 불가 경고','HIGH'],
+  [15,'그리스','20일 미만 추정','여름 성수기 · ACI 경보','HIGH'],
+  [16,'네덜란드',"IEA '위험국'",'정부 5개월 충당 · KLM 160편 취소','HIGH'],
+  [17,'포르투갈','Argus 고취약','4/10 이후 신규 탱커 없음','HIGH'],
+  [18,'덴마크','비축 감소','4/11 최종 탱커 이후 입고 없음','HIGH'],
+  [19,'스웨덴/노르웨이','비축 감소','SAS 1,000편+ 취소','HIGH'],
+  [20,'스페인','유럽 순수출국','EU 공유 메커니즘 참여','HIGH'],
+  [21,'호주','30일(IEEFA)','IEA 최하위 · 국내 정제 17%','HIGH'],
+  [22,'뉴질랜드','약 27일','MBIE 관리 가능 · Air NZ 1,100편+','HIGH'],
+  [23,'말레이시아','비축 미공개','AirAsia X +40% · Batik 36%↓','HIGH'],
+  [24,'인도네시아','force majeure','Pertamina 불가항력 선언','HIGH'],
+  [25,'인도','자체 공급 지속','ATF 130%↑ · 할증 부과','HIGH'],
+  [26,'일본','200일+ 비축','급유 제한(자국 우선) · 5월 수출 2배↑','HIGH'],
+  [27,'싱가포르','허브 유지','미국 150k bpd 완충','HIGH'],
+  [28,'파키스탄','NOTAM 발효','Jet A-1 NOTAM(4/1~)','HIGH'],
+  [29,'케냐','공급 압박','JKA 72시간 경보(3월)','HIGH'],
+  [30,'남아공','비용 폭증','FlySafair 운영비 70%↑','HIGH'],
+  [31,'에티오피아','비축 미공개','디젤 절반 · EA 완충','HIGH'],
+  [32,'LAX (캘리포니아)','2.6M bbl 역사저점','가격위기 · 정상 운항','HIGH'],
+  [33,'ANC (알래스카)','한국산 86% 의존','5월 수출 2배↑ 완충','HIGH'],
+  [34,'HNL (하와이)','정유소 없음','한국산 해상 28k bpd','HIGH'],
+  [35,'태국','95일 비축 (과잉)','수출금지로 재고 포화 · 수출 재개 검토','MODERATE'],
+  [36,'한국','200일+ 비축','전세계 수출 30% · 5월 2배↑','MODERATE'],
+  [37,'터키','80% 자국','Tüpraş+SOCAR STAR 250만톤/년','MODERATE'],
+  [38,'중국','비축 충분','수출금지 · 5월 재개 타진','MODERATE'],
+  [39,'동유럽 4개국','자체 정제+파이프라인','체코·슬로바키아·헝가리·루마니아','MODERATE'],
+  [40,'오스트리아',"IEA '안정적'",'IEA Apr 17 직접 명시','STABLE'],
+  [41,'불가리아',"IEA '안정적'",'흑해 항로','STABLE'],
+  [42,'폴란드',"IEA '안정적'",'Orlen 정유그룹','STABLE'],
+  [43,'미국 본토','물리적 부족 없음','EIA 확인 · EU향 150k bpd','STABLE'],
+  [44,'캐나다','물리적 부족 없음','자국 원유 생산','STABLE'],
+];
+
+// ── 랭킹 테이블 생성 ────────────────────────────────────────────
+const tbody = document.getElementById('rt-body');
+ROWS.forEach(([rank,name,state,note,s])=>{
+  const tr = document.createElement('tr');
+  tr.className = LEVEL_CLASS[s] || '';
+  tr.dataset.s = s;
+  tr.innerHTML = `
+    <td style="font-weight:700">${rank}</td>
+    <td>${name}</td>
+    <td style="white-space:nowrap;font-size:10px">${state}</td>
+    <td style="font-size:10.5px">${note}</td>
+    <td><span class="badge ${BADGE_CLASS[s]||''}">${BADGE_TEXT[s]||s}</span></td>`;
+  tbody.appendChild(tr);
+});
+
+// ── 필터 로직 ────────────────────────────────────────────────────
+let currentFilter = 'ALL';
+let svgPaths = null;
+
 function setFilter(f){
   currentFilter = f;
-  document.querySelectorAll(".fb").forEach(b=>b.classList.remove("active"));
-  event.target.classList.add("active");
-  svg.selectAll("path.c").attr("opacity", d=>{
-    const info=getInfo(d);
-    if(f==="ALL") return info ? 0.88 : 0.5;
-    if(f==="PADD5") return 0.35;
-    if(!info) return 0.18;
-    return info.s===f ? 0.92 : 0.22;
+  // 버튼 active 상태
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+  const btnMap = {ALL:'btn-ALL',CRITICAL:'btn-L5',HIGH:'btn-L4',MODERATE:'btn-L3',STABLE:'btn-L2',PADD5:'btn-P5'};
+  const btn = document.getElementById(btnMap[f]);
+  if(btn) btn.classList.add('active');
+
+  // 지도 국가 색상·투명도
+  if(svgPaths){
+    svgPaths
+      .attr('fill', function(d){
+        const info = d._info;
+        if(!info) return '#1e3a5f';
+        if(f==='ALL' || f==='PADD5') return SC[info.s];
+        return info.s===f ? SC[info.s] : '#2d3748';
+      })
+      .attr('opacity', function(d){
+        const info = d._info;
+        if(f==='ALL') return info ? 0.88 : 0.45;
+        if(f==='PADD5') return info ? 0.3 : 0.18;
+        if(!info) return 0.12;
+        return info.s===f ? 0.95 : 0.12;
+      });
+  }
+
+  // 공항 마커
+  d3.selectAll('.ap-dot').attr('opacity', function(){
+    const s = this.getAttribute('data-s');
+    if(f==='ALL'||f==='PADD5') return 1;
+    return s===f ? 1 : 0.1;
   });
-  svg.selectAll(".ap-dot").attr("opacity", function(){
-    const as=this.getAttribute("data-s");
-    if(f==="ALL") return 1;
-    if(f==="PADD5") return 1;
-    return as===f ? 1 : 0.15;
+  d3.selectAll('.ap-label').attr('opacity', function(){
+    const s = this.getAttribute('data-s');
+    if(f==='ALL'||f==='PADD5') return 1;
+    return s===f ? 1 : 0.1;
   });
-  svg.selectAll(".ap-label").attr("opacity", function(){
-    const as=this.getAttribute("data-s");
-    if(f==="ALL") return 1;
-    if(f==="PADD5") return 1;
-    return as===f ? 1 : 0.15;
+
+  // 테이블 필터
+  document.querySelectorAll('#rt-body tr').forEach(tr=>{
+    tr.style.display = (f==='ALL' || f==='PADD5' || tr.dataset.s===f) ? '' : 'none';
   });
+
+  // 정보 바
+  const counts={CRITICAL:0,HIGH:0,MODERATE:0,STABLE:0};
+  Object.values(DATA).forEach(d=>{ if(counts[d.s]!==undefined) counts[d.s]++; });
+  const fi = document.getElementById('filter-info');
+  if(f==='ALL'){
+    fi.textContent = `전체 ${Object.keys(DATA).length}개국·지역 | 🔴L5:${counts.CRITICAL} 🟠L4:${counts.HIGH} 🟡L3:${counts.MODERATE} 🔵L2:${counts.STABLE} | 필터 버튼으로 등급별 확인`;
+  } else if(f==='PADD5'){
+    fi.textContent = 'PADD5 공항 (ANC·LAX·HNL) 강조 — 한국산 의존 · 5월 수출 2배↑로 완충 기대';
+  } else {
+    const labels={CRITICAL:'LEVEL 5 배급·차단',HIGH:'LEVEL 4 비축위기',MODERATE:'LEVEL 3 완충',STABLE:'LEVEL 2 안정'};
+    fi.textContent = `${labels[f]||f} — ${counts[f]||0}개국 표시 중`;
+  }
 }
 
-d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world=>{
+// ── 툴팁 ─────────────────────────────────────────────────────────
+const tooltip = document.getElementById('tooltip');
+function showTip(e, info, name){
+  const tn = document.getElementById('tt-n');
+  const ts = document.getElementById('tt-s');
+  const td = document.getElementById('tt-d');
+  const tt = document.getElementById('tt-t');
+
+  tn.textContent = name || info.n;
+  ts.textContent = SL[info.s] || info.s;
+  ts.style.color = SE[info.s] || '#fff';
+  td.textContent = info.d || '';
+
+  // 세부 정보 — 줄바꿈 처리
+  tt.innerHTML = '';
+  if(info.t){
+    info.t.split('\n').forEach((line, i) => {
+      if(i > 0){
+        tt.appendChild(document.createElement('br'));
+      }
+      // 출처 라인 별도 스타일
+      if(line.startsWith('출처:')){
+        const span = document.createElement('span');
+        span.style.cssText = 'color:#64748b;font-size:10px';
+        span.textContent = line;
+        tt.appendChild(span);
+      } else {
+        tt.appendChild(document.createTextNode(line));
+      }
+    });
+  }
+
+  tooltip.style.display = 'block';
+
+  // 화면 경계 처리
+  const tw = 290, tipH = tooltip.offsetHeight || 120;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  let left = e.clientX + 16;
+  let top  = e.clientY - 12;
+  if(left + tw > vw - 10) left = e.clientX - tw - 10;
+  if(top + tipH > vh - 10) top = vh - tipH - 10;
+  if(top < 8) top = 8;
+  tooltip.style.left = left + 'px';
+  tooltip.style.top  = top  + 'px';
+}
+function hideTip(){ tooltip.style.display='none'; }
+
+// ── 지도 렌더링 ──────────────────────────────────────────────────
+const W=960, H=500;
+const svg  = d3.select('#worldmap');
+const proj = d3.geoNaturalEarth1().scale(153).translate([W/2, H/2+20]);
+const geoPath = d3.geoPath(proj);
+
+// 격자선
+svg.append('path').datum(d3.geoGraticule()())
+  .attr('fill','none').attr('stroke','rgba(255,255,255,0.04)')
+  .attr('stroke-width',0.5).attr('d',geoPath);
+
+d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world=>{
   const features = topojson.feature(world, world.objects.countries).features;
 
-  // 격자선
-  svg.append("path").datum(d3.geoGraticule()())
-    .attr("fill","none").attr("stroke","rgba(255,255,255,0.05)")
-    .attr("stroke-width",0.5).attr("d",geoPath);
+  // 각 feature에 info 캐싱
+  features.forEach(f=>{ f._info = getInfo(f, proj, geoPath); });
 
-  // 국가 fill
-  svg.selectAll("path.c").data(features).join("path").attr("class","c")
-    .attr("d", geoPath)
-    .attr("fill", d=>{ const i=getInfo(d); return i ? SC[i.s] : "#1e3a5f"; })
-    .attr("stroke","rgba(255,255,255,0.11)").attr("stroke-width",0.4)
-    .attr("opacity", d=>getInfo(d) ? 0.88 : 0.5)
-    .style("cursor", d=>getInfo(d) ? "pointer" : "default")
-    .on("mousemove", function(e,d){
-      const i=getInfo(d);
-      if(i) showTip(e, i.n, i.s, i.d, i.note);
+  svgPaths = svg.selectAll('path.country').data(features).join('path')
+    .attr('class','country')
+    .attr('d', geoPath)
+    .attr('fill', d=> d._info ? SC[d._info.s] : '#1e3a5f')
+    .attr('stroke','rgba(255,255,255,0.1)')
+    .attr('stroke-width',0.35)
+    .attr('opacity', d=> d._info ? 0.88 : 0.45)
+    .style('cursor', d=> d._info ? 'pointer' : 'default')
+    .on('mousemove', function(e,d){
+      if(d._info){
+        showTip(e, d._info, d._info.n);
+        // 실시간 위치 추적
+        const tw=300, vh=window.innerHeight;
+        let lx=e.clientX+16, ty=e.clientY-12;
+        if(lx+tw>window.innerWidth-10) lx=e.clientX-tw-10;
+        if(ty+120>vh-10) ty=vh-130;
+        tooltip.style.left=lx+'px'; tooltip.style.top=ty+'px';
+      }
     })
-    .on("mouseleave", hideTip);
+    .on('mouseleave', hideTip);
 
-  // ── 유가 표 (우상단) — 4행 + 항공유 행 ─────────────────────────
-  const tx=W-234, ty=8, tw=226, th=120;
-  const tg=svg.append("g");
-  tg.append("rect").attr("x",tx).attr("y",ty).attr("width",tw).attr("height",th)
-    .attr("fill","rgba(8,14,28,0.93)").attr("rx",6)
-    .attr("stroke","rgba(71,85,105,.9)").attr("stroke-width",0.8);
+  // ── 유가 표 (우상단) ────────────────────────────────────────────
+  const tx=W-250, ty=8, tw=244, th=178;
+  const tg=svg.append('g');
+  tg.append('rect').attr('x',tx).attr('y',ty).attr('width',tw).attr('height',th)
+    .attr('fill','rgba(8,14,28,0.93)').attr('rx',6)
+    .attr('stroke','rgba(71,85,105,.9)').attr('stroke-width',0.8);
 
-  const cw=[82,38,42,38];
-  ["일자","Dubai","Brent","WTI"].forEach((c,i)=>{
+  // 헤더
+  const cw=[76,42,44,40];
+  ['일자','Dubai','Brent','WTI'].forEach((hd,i)=>{
     let cx=tx+6; for(let k=0;k<i;k++) cx+=cw[k];
-    tg.append("text").attr("x",cx).attr("y",ty+16)
-      .attr("font-size","8.5px").attr("font-weight","700").attr("fill","#94a3b8").text(c);
+    tg.append('text').attr('x',cx).attr('y',ty+16)
+      .attr('font-size','8.5px').attr('font-weight','700').attr('fill','#94a3b8').text(hd);
   });
-  tg.append("line").attr("x1",tx+4).attr("x2",tx+tw-4).attr("y1",ty+20).attr("y2",ty+20)
-    .attr("stroke","rgba(71,85,105,.7)").attr("stroke-width",0.6);
+  tg.append('line').attr('x1',tx+4).attr('x2',tx+tw-4).attr('y1',ty+20).attr('y2',ty+20)
+    .attr('stroke','rgba(71,85,105,.7)').attr('stroke-width',0.6);
 
-  // 04/20 ~ 04/23 총 4행
+  // 4행 데이터
   const rows=[
-    ["04/20","98.5",   "95.48", "89.61",false],
-    ["04/21","94.27",  "98.48", "92.13",false],
-    ["04/22","100.4",  "101.91","92.96",false],
-    ["04/23","104.81", "105.07","95.85",true],
+    ['04/27','104.2','108.23','96.37',false],
+    ['04/28','107.2','111.26','99.93',false],
+    ['04/29','106.49','118.03','106.88',false],
+    ['04/30','112.2','114.01','105.07',true],
   ];
   rows.forEach(([d0,d1,d2,d3,isLatest],ri)=>{
-    const vals=[d0,d1,d2,d3];
-    const numCol = isLatest ? "#fde68a" : "#6ee7b7";
-    const cols=["#cbd5e1", numCol, numCol, isLatest?"#fca5a5":numCol];
-    vals.forEach((v,ci)=>{
+    const nc = isLatest ? '#fde68a' : '#6ee7b7';
+    const cols=['#cbd5e1',nc,nc,isLatest?'#fca5a5':nc];
+    [d0,d1,d2,d3].forEach((v,ci)=>{
       let cx=tx+6; for(let k=0;k<ci;k++) cx+=cw[k];
-      tg.append("text").attr("x",cx).attr("y",ty+33+ri*16)
-        .attr("font-size","9.5px").attr("font-weight",ci===0?"400":"600")
-        .attr("fill",cols[ci]).text(v);
+      tg.append('text').attr('x',cx).attr('y',ty+33+ri*16)
+        .attr('font-size','9.5px').attr('font-weight',ci===0?'400':'600')
+        .attr('fill',cols[ci]).text(v);
     });
     if(isLatest){
-      tg.append("text").attr("x",tx+tw-30).attr("y",ty+33+ri*16)
-        .attr("font-size","7.5px").attr("font-weight","700")
-        .attr("fill","#fde68a").text("최신");
+      tg.append('text').attr('x',tx+tw-28).attr('y',ty+33+ri*16)
+        .attr('font-size','7.5px').attr('font-weight','700').attr('fill','#fde68a').text('최신');
     }
   });
 
-  tg.append("line").attr("x1",tx+4).attr("x2",tx+tw-4).attr("y1",ty+83).attr("y2",ty+83)
-    .attr("stroke","rgba(71,85,105,.5)").attr("stroke-width",0.5);
-  tg.append("text").attr("x",tx+6).attr("y",ty+94)
-    .attr("font-size","8.5px").attr("fill","#94a3b8").text("NW유럽 항공유 (4/11 최고치)");
-  tg.append("text").attr("x",tx+6).attr("y",ty+th-4)
-    .attr("font-size","12px").attr("font-weight","700").attr("fill","#f87171").text("$1,838/톤");
-  tg.append("text").attr("x",tx+88).attr("y",ty+th-4)
-    .attr("font-size","8.5px").attr("fill","#64748b").text("(4/11 최고 · Argus)");
+  // 구분선 + MOPS 월평균 (2월/3월/4월)
+  tg.append('line').attr('x1',tx+4).attr('x2',tx+tw-4).attr('y1',ty+100).attr('y2',ty+100)
+    .attr('stroke','rgba(71,85,105,.5)').attr('stroke-width',0.5);
+  tg.append('text').attr('x',tx+6).attr('y',ty+113)
+    .attr('font-size','8.5px').attr('font-weight','700').attr('fill','#f472b6').text('MOPS 월평균 (싱가포르 항공유 현물)');
+  const mopsItems=[
+    {label:'2월 평균', val:'$89.0',  col:'#6ee7b7', x:0},
+    {label:'3월 평균', val:'$195.4', col:'#f87171',  x:82},
+    {label:'4월 평균', val:'$200.4', col:'#fde68a',  x:164},
+  ];
+  mopsItems.forEach((m,i)=>{
+    const bx=tx+6+m.x;
+    tg.append('text').attr('x',bx).attr('y',ty+126).attr('font-size','8px').attr('fill','#94a3b8').text(m.label);
+    tg.append('text').attr('x',bx).attr('y',ty+141).attr('font-size','11.5px').attr('font-weight','700').attr('fill',m.col).text(m.val);
+    if(i<2){
+      tg.append('text').attr('x',bx+76).attr('y',ty+141).attr('font-size','10px').attr('fill','#475569').text('→');
+    }
+  });
 
-  // ── PADD5 설명 박스 (좌하단) ───────────────────────────────────
-  const px=8, py=H-78, pw=270, ph=70;
-  const pg=svg.append("g");
-  pg.append("rect").attr("x",px).attr("y",py).attr("width",pw).attr("height",ph)
-    .attr("fill","rgba(40,10,55,0.90)").attr("rx",5)
-    .attr("stroke","rgba(147,51,234,.6)").attr("stroke-width",0.8);
-  pg.append("text").attr("x",px+8).attr("y",py+14)
-    .attr("font-size","9px").attr("font-weight","700").attr("fill","#d8b4fe")
-    .text("⚠ PADD5 위기 구조");
+  // 구분선 + IATA Jet Fuel Week (4월 마지막주 $179.46/bbl)
+  tg.append('line').attr('x1',tx+4).attr('x2',tx+tw-4).attr('y1',ty+152).attr('y2',ty+152)
+    .attr('stroke','rgba(71,85,105,.4)').attr('stroke-width',0.5);
+  tg.append('text').attr('x',tx+6).attr('y',ty+164)
+    .attr('font-size','8.5px').attr('fill','#94a3b8')
+    .text('IATA Jet Fuel Week (w/e Apr 28, 2026)');
+  tg.append('text').attr('x',tx+6).attr('y',ty+th-4)
+    .attr('font-size','13px').attr('font-weight','700').attr('fill','#f87171')
+    .text('$179.46/bbl');
+  tg.append('text').attr('x',tx+102).attr('y',ty+th-4)
+    .attr('font-size','8.5px').attr('fill','#94a3b8')
+    .text('↓2.8% WoW | 前 $88 대비 +104%');
+
+  // ── PADD5 설명 박스 (좌하단) ─────────────────────────────────
+  const px=8, py=H-80, pw=268, ph=72;
+  const pg=svg.append('g');
+  pg.append('rect').attr('x',px).attr('y',py).attr('width',pw).attr('height',ph)
+    .attr('fill','rgba(8,14,28,0.9)').attr('rx',5)
+    .attr('stroke','rgba(107,33,168,.7)').attr('stroke-width',0.8);
+  pg.append('text').attr('x',px+8).attr('y',py+14)
+    .attr('font-size','8.5px').attr('font-weight','700').attr('fill','#c4b5fd').text('⚠ PADD5 구조 (서부해안 항공유)');
   const plines=[
-    "한국 정제소 → PADD5 항공유 86% (80,000bpd)",
-    "ANC ~7일 / LAX ~4일 / HNL ~2일 (Apr 24)",
-    "한국 원유 부족 → ANC·LAX·HNL 동시 차질",
-    "Jones Act 49척만 대안 | Red Hill 폐쇄(2023)",
+    '한국 정제소 → PADD5 항공유 86%(80,000bpd)',
+    'ANC ~L4 / LAX ~L4 / HNL ~L4 (May 1)',
+    '한국 5월 수출 4월 대비 2배↑ → 완충 기대',
+    'Jones Act 49척만 대안 | Red Hill 폐쇄(2023)',
   ];
   plines.forEach((l,i)=>{
-    pg.append("text").attr("x",px+8).attr("y",py+27+i*12)
-      .attr("font-size","8px").attr("fill","#c4b5fd").text(l);
+    pg.append('text').attr('x',px+8).attr('y',py+27+i*12)
+      .attr('font-size','8px').attr('fill','#94a3b8').text(l);
   });
 
-  // ── 공항 마커 (ANC·LAX·HNL만, 호르무즈 제거) ──────────────────
-  const ag=svg.append("g");
+  // ── 공항 마커 (ANC·LAX·HNL) ─────────────────────────────────
+  const ag=svg.append('g');
   AIRPORTS.forEach(ap=>{
-    if(ap.id==="HRM") return;   // 호르무즈 표기 제거
-    const [apx, apy]=proj([ap.lon, ap.lat]);
+    const [apx,apy]=proj([ap.lon,ap.lat]);
     if(!apx||!apy) return;
-    const col = SC[ap.s];
-    const r   = 3.5;            // 원 크기 축소
-
-    ag.append("circle").attr("class","ap-dot")
-      .attr("data-s",ap.s).attr("data-id",ap.id)
-      .attr("cx",apx).attr("cy",apy).attr("r",r)
-      .attr("fill",col).attr("stroke","#fff").attr("stroke-width",1)
-      .style("cursor","pointer")
-      .on("mousemove",e=>{
-        showTip(e, ap.name, ap.s, ap.d,
-          `소진예상: ${ap.depl}\n${ap.note}`);
+    ag.append('circle').attr('class','ap-dot')
+      .attr('data-s','HIGH')
+      .attr('cx',apx).attr('cy',apy).attr('r',3.5)
+      .attr('fill',SC.HIGH).attr('stroke','#fff').attr('stroke-width',1)
+      .style('cursor','pointer')
+      .on('mousemove',e=>{
+        showTip(e,{s:'HIGH',d:'⚠ PADD5 HIGH',t:ap.note},ap.name);
       })
-      .on("mouseleave",hideTip);
-
-    const anchor = (ap.id==="HNL") ? "end" : "start";
-    const lx = (ap.id==="HNL") ? apx-7 : apx+7;
-    const ly = apy-6;
-
-    ag.append("text").attr("class","ap-label")
-      .attr("data-s",ap.s).attr("data-id",ap.id)
-      .attr("x",lx).attr("y",ly)
-      .attr("text-anchor",anchor)
-      .attr("font-size","8px").attr("font-weight","700")
-      .attr("fill",col)
-      .attr("stroke","#0c1829").attr("stroke-width",2).attr("paint-order","stroke")
-      .text(ap.id)
-      .style("pointer-events","none");
+      .on('mouseleave',hideTip);
+    ag.append('text').attr('class','ap-label')
+      .attr('data-s','HIGH')
+      .attr('x',ap.id==='HNL'?apx-7:apx+7)
+      .attr('y',apy-6)
+      .attr('text-anchor',ap.id==='HNL'?'end':'start')
+      .attr('font-size','8px').attr('font-weight','700').attr('fill',SC.HIGH)
+      .attr('stroke','#0c1829').attr('stroke-width',2).attr('paint-order','stroke')
+      .text(ap.id).style('pointer-events','none');
   });
 
-  // ── 하단 상태바 ─────────────────────────────────────────────────
-  svg.append("rect").attr("x",8).attr("y",H-8)
-    .attr("width",430).attr("height",0).attr("fill","none");
-  svg.append("rect").attr("x",286).attr("y",H-22)
-    .attr("width",370).attr("height",16)
-    .attr("fill","rgba(59,15,26,.88)").attr("rx",4)
-    .attr("stroke","rgba(244,63,94,.4)").attr("stroke-width",0.5);
-  svg.append("text").attr("x",290).attr("y",H-9)
-    .attr("font-size","8.5px").attr("fill","#fecdd3")
-    .text("D+55 (Apr 24) | IATA: 5월말 유럽 결항 | Lufthansa 2만편 | Brent $105.07 | IAG 소진중");
+  // ── 하단 상태 바 ──────────────────────────────────────────────
+  const counts={CRITICAL:0,HIGH:0,MODERATE:0,STABLE:0};
+  Object.values(DATA).forEach(d=>{ if(counts[d.s]!==undefined) counts[d.s]++; });
+  svg.append('text').attr('x',290).attr('y',H-9)
+    .attr('font-size','8.5px').attr('fill','#fecdd3')
+    .text(`D+62 (May 1) | L5:${counts.CRITICAL}국 | L4:${counts.HIGH}국 | 태국 95일(과잉)·한국 200일+ | Brent $114.01`);
+
+  // 초기 filter-info
+  setFilter('ALL');
 
 }).catch(()=>{
-  svg.append("text").attr("x",W/2).attr("y",H/2)
-    .attr("text-anchor","middle").attr("fill","#94a3b8")
-    .attr("font-size","14px").text("지도 로딩 실패 — 네트워크를 확인해주세요");
+  document.getElementById('map-container').innerHTML =
+    '<div style="color:#f87171;padding:30px;text-align:center;font-size:14px">지도 데이터 로드 실패.<br>인터넷 연결을 확인하거나 브라우저에서 직접 파일을 열어주세요.</div>';
 });
 </script>
 </body>
